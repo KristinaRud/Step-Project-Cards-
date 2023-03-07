@@ -1,5 +1,8 @@
 body{
     background-color: rgba(243,245,245,1.00);
+    font-family: 'Roboto Serif', sans-serif;
+    min-width: 320px;
+
 }
 header{
     background-color: white;
@@ -71,11 +74,88 @@ header{
 
 main{
     padding: 20px 0;
+    text-align: center;
 }
 
 #main{
     background-color: #F7F8F8;
     box-shadow:0px 1px 4px rgb(60 60 60 / 15%);
     border-radius: 10px;
-    height: 500px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.placeholder__text{
+    color: rgba(108,134,152,1.00);
+    margin-bottom: 50px;
+}
+/*card Visit*/
+.visit__list {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px
+}
+
+.visit__menu {
+    border: 1px solid hsl(0, 0%, 90%);
+    padding: 8px;
+}
+.visit__item{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    text-align: center;
+
+}
+.visit__title{
+    color: rgba(13,56,87,1.00);
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.visit__text-doctor{
+    color: rgba(108,134,152,1.00);
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.visit__img{
+    -webkit-user-select: none;
+    background-color: hsl(0, 0%, 90%);
+    transition: background-color 300ms;
+}
+.visit-btn{
+    background-color: hsl(0, 0%, 90%);
+    padding: 10px;
+    color: rgba(13,56,87,1.00);
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.wrapper-icon{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#btn-close{
+    fill: rgba(108,134,152,1.00);
+   background-color:  hsl(0, 0%, 90%);
+    cursor: pointer;
+}
+#btn-edit {
+    fill: rgba(108,134,152,1.00);
+    background-color:  hsl(0, 0%, 90%);
+    cursor: pointer;
+
+}
+.text__total, .text__cardiologist, .text__therapist, .text__dentist {
+    margin-top: 10px;
+    color: rgb(108, 134, 152);
+    font-size: 12px;
+    line-height: 16px;
+    text-align: start;
+
 }
