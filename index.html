@@ -44,55 +44,34 @@
 </header>
 <main>
     <div class="container placeholder" id="main">
-                <p class="placeholder__text">Тут буде історія візитів.</p>
-                            <img class="placeholder__img" src="images/placeholder.png" alt="placeholder">
-                            <template class="visit">
+        <p class="placeholder__text">Тут буде історія візитів.</p>
+        <img class="placeholder__img" src="images/placeholder.png" alt="placeholder">
         <ul class="visit__list">
-            <li class="visit__menu text">
-                <div class="visit__item">
-                    <div>
-                        <h3 class="visit__title">Земляна Оксана</h3>
-                        <p class="visit__text-doctor">Стоматолог</p>
-                        <button class="visit-btn">Показати більше</button>
+            <template class="visit">
+                <li class="visit__menu text">
+                    <div class="visit__item">
+                        <div>
+                            <h3 class="visit__title"></h3>
+                            <p class="visit__text-doctor"></p>
+                            <button class="visit-btn">Показати більше</button>
+                        </div>
+                        <div class="wrapper-icon">
+                            <svg id="btn-close" xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 96 960 960"
+                                 width="28">
+                                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                            </svg>
+                            <svg id="btn-edit" xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 96 960 960"
+                                 width="28">
+                                <path d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"/>
+                            </svg>
+                        </div>
+                        <img class="visit__img" alt="dentist">
                     </div>
-                    <div class="wrapper-icon">
-                        <svg id="btn-close" xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 96 960 960"
-                             width="28">
-                            <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
-                        </svg>
-                        <svg id="btn-edit" xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 96 960 960"
-                             width="28">
-                            <path d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"/>
-                        </svg>
+                    <div class="text-wrapper">
                     </div>
-                    <img class="visit__img" id="visit__img-dentist" alt="dentist"
-                         src="https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Flandings%2F%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F%2FStomatologia.gif%3Fv%3D">
-                                        <img class="visit__img" id="visit__img-cardiologist" alt="cardiologist"
-                                             src="https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Fhome.jpg%3Fv%3Dt&quot">
-
-                                        <img class="visit__img" id="visit__therapist" alt="therapist"
-                                             src="https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Flandings%2F%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D0%B8%D1%8F%2F%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D1%96%D1%8F_%D0%B7%D0%B0%D0%B3%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9%20%D0%BB%D0%B5%D0%BD%D0%B4%D1%96%D0%BD%D0%B3%2F%2Fterapia.gif%3Fv%3Dt">
-                </div>
-                                <div>
-                                    <p class="text__total"> Мета: ${goal}. <br>
-                                        Короткий опис: ${short-description}.<br>
-                                        Терміновість: ${drop}.<br>
-                                    </p>
-                                    <p class="text__cardiologist"> Звичайний тиск: ${pressure}. <br>
-                                        Індекс маси тіла: ${bms}. <br>
-                                        Перенесені захворювання серцево-судинної системи: ${heart}. <br>
-                                        Вік: ${age}. <br>
-                                    </p>
-                                    <p class="text__therapist">
-                                        Вік: ${age}. <br>
-                                    </p>
-                                    <p class="text__dentist">
-                                        Дата останнього відвідування: ${date}. <br>
-                                    </p>
-                                </div>
-            </li>
+                </li>
+            </template>
         </ul>
-                            </template>
     </div>
 </main>
 <script src="./js/index.js" type="module"></script>
