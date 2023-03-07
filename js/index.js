@@ -8,6 +8,6 @@ const visit = new VisitDentist(data1);
 const visit2 = new VisitCardiologist(data2);
 const visit3 = new VisitTherapist(data3)
 visit.render(document.querySelector('.visit__list'));
-visit2.render(document.querySelector('.visit__list'))
-visit3.render(document.querySelector('.visit__list'))
+visit2.render(document.querySelector('.visit__list'));
+visit3.render(document.querySelector('.visit__list'));
 
