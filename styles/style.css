@@ -61,7 +61,64 @@ header{
 .btn-lang:active{
     opacity: 0.6;
 }
+/*Login*/
+.modal-overlay {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modal{
+    background: white;
+    padding: 40px;
+    width: 500px;
+}
+#login-form{
+    display: flex;
+    flex-direction: column;
+}
 
+.input-wrapper {
+    position: relative;
+    width: 100%;
+         
+  }
+
+  .input-wrapper input {
+    width: inherit;
+    padding: 10px;
+    margin-bottom: 24px;
+  }
+
+  .input-wrapper i {
+    position: absolute;
+    right: 5%;
+    top: 20%;   
+    color: grey;
+  }
+.close{
+    border: none;
+    background: none;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 33%;
+    top: 37%;
+    transform: translateX(-37%);
+}
+
+#sign-in{
+    background: dodgerblue;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+}
 
 /*filter-section*/
 

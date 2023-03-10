@@ -2,7 +2,8 @@ import logIn from "../api/api.js";
 import { setTokenToLocalStorage } from "../api/api.js";
 
 export default class Login {
-  constructor() {}
+  constructor(){
+  }
 
   async handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +19,20 @@ export default class Login {
     } catch (error) {
       console.error(error);
       alert("Failed to log in");
+    }
+  }
+
+  showPassword(e) {
+    const iconTarget = e.target.closest("i");
+
+    if (iconTarget) {
+      iconTarget.classList.toggle("bi-eye-fill");
+      iconTarget.classList.toggle("bi-eye-slash-fill");
+
+      const type = iconTarget.classList.contains("bi-eye-slash-fill")
+        ? "text"
+        : "password";
+      iconTarget.previousElementSibling.setAttribute("type", type);
     }
   }
 
@@ -42,27 +57,41 @@ export default class Login {
   }
 
   render() {
+
     const form = document.createElement("form");
+    const labelLogin = document.createElement("label");
     const emailInput = document.createElement("input");
+    const labelPass = document.createElement("label");
     const passwordInput = document.createElement("input");
+    const iconEye = document.createElement("i");
     const submitButton = document.createElement("button");
 
+    form.id = "login-form";
     emailInput.type = "email";
     emailInput.id = "email";
-    emailInput.placeholder = "Email";
+    emailInput.placeholder = "Ваша пошта";
     emailInput.required = true;
 
     passwordInput.type = "password";
     passwordInput.id = "password";
-    passwordInput.placeholder = "Password";
+    passwordInput.placeholder = "Ваш пароль";
     passwordInput.required = true;
 
+    labelLogin.classList.add("input-wrapper");
+    labelPass.classList.add("input-wrapper");
+    iconEye.classList.add("bi", "bi-eye-fill");
+
     submitButton.type = "submit";
-    submitButton.textContent = "Log in";
+    submitButton.id="sing-in";
+    submitButton.textContent = "Вхід";
+
+    labelPass.append(passwordInput, iconEye);
+    labelLogin.append(emailInput);
 
     form.addEventListener("submit", this.handleSubmit.bind(this));
+    form.addEventListener("click", this.showPassword.bind(this));
 
-    form.append(emailInput, passwordInput, submitButton);
+    form.append(labelLogin, labelPass, submitButton);
 
     return form;
   }
