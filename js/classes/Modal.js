@@ -19,12 +19,12 @@ export default class Modal {
         closeBtn.className = 'close';
 
         closeBtn.addEventListener("click", () => {
-            modalOverlay.style.display = "none";
+            modalOverlay.remove();
         });
 
         modalOverlay.addEventListener("click", (e) => {
             if (e.target === modalOverlay) {
-                modalOverlay.style.display = "none";
+                modalOverlay.remove();
             }
         });
 

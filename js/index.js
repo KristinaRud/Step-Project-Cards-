@@ -4,6 +4,8 @@ import VisitCardiologist from "./classes/VisitCardiologist.js";
 import VisitTherapist from "./classes/VisitTherapist.js";
 import Login from "./classes/Login.js";
 import Modal from "./classes/Modal.js";
+import { getAllCards, getTokenFromLocalStorage } from "./api/api.js";
+import { changedBtnAuth, btnLogIn, getCardsFunc } from "./functional/functional.js";
 
 
 const visit = new VisitDentist(data1);
@@ -15,21 +17,25 @@ visit3.render(document.querySelector('.visit__list'));
 
 //logIn('kristina.rud5@gmail.com', '123456');
 
-const root = document.querySelector(".container");
-
 //createCard(dataObj, '235ab8bf-e8e7-4ac9-ba7e-49b864771ddc');
 
 const loginBtn = document.querySelector(".btn-autorize");
 
-loginBtn.addEventListener("click", () => {
-    const modalLogin = new Modal().render(new Login().render());
-    root.appendChild(modalLogin);
 
-    const modalOverlay = document.querySelector(".modal-overlay");
-    ///доработать модалку
-    modalOverlay.style.display = "flex";
-    console.log(root);
-});
+// loginBtn.addEventListener("click", btnLogIn(root));
+
+const btn=document.querySelector('.btn-autorize');
+const title = document.querySelector('.title-auth');
+
+document.addEventListener("DOMContentLoaded", async()=>{
+    const token = getTokenFromLocalStorage();
+    if(token){ 
+        changedBtnAuth(btn, title);
+        getCardsFunc(await getAllCards(token));
+    }else{
+        changedBtnAuth(btn, title);
+    }
+})
 
 
 

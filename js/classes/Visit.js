@@ -52,7 +52,7 @@ export const data1 = {
     date: "11/12/2022"
 }
 export const data2 = {
-    name: "Крістіна Рудь",
+    name: "Кристина Рудь",
     doctor: "Кардіолог",
     goal: "Огляд",
     description: "Високе серцебиття",
