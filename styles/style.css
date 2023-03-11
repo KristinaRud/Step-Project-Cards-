@@ -167,7 +167,9 @@ header{
     padding: 5px 20px;
     cursor: pointer;
 }
-
+.filter-btn:hover {
+    background-color: rgba(243,245,245,1.00);
+}
 /*main*/
 
 main{
