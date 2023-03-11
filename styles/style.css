@@ -124,7 +124,49 @@ header{
 
 .filter-section{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    margin: 10px auto;
+    gap: 30px;
+    max-width: max-content;
+    /*background-color: #F7F8F8;*/
+    font-size: 12px;
+    line-height: 16px;
+    box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
+}
+.wrapper-input {
+    position: relative;
+}
+.filter__input, .filter select{
+    box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
+    background-color: rgba(0,0,0,0.00);
+    border: 0 solid white;
+    color: rgba(13,56,87,1.00);
+    padding: 5px 20px;
+    outline:none;
+}
+
+.filter__input::placeholder{
+    font-size: 12px;
+    color:#6B7D8E;
+
+}
+.filter svg{
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    opacity: 0.5;
+    width: 20px;
+    height: 20px;
+}
+
+.filter-btn {
+    box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
+    background-color: rgba(0,0,0,0.00);
+    border: 0 solid white;
+    color: rgba(13,56,87,1.00);
+    padding: 5px 20px;
+    cursor: pointer;
 }
 
 /*main*/
