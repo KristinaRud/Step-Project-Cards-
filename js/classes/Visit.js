@@ -38,6 +38,18 @@ export default class Visit {
                 this.infoVisit.textContent =''
             }})
     }
+    edit(){
+
+    }
+
+    delete (){
+      const btnClose = this.li.querySelector('#btn-close');
+      btnClose.addEventListener('click', ()=>{
+          ApiDelete(id).then(({status}) => {
+                this.li.remove();
+                 });
+      })
+    }
 }
 export const data1 = {
     name: "Оксана Земляна",
@@ -49,7 +61,8 @@ export const data1 = {
     bms: 20,
     pressure: 80-120,
     heart: 'немає',
-    date: "11/12/2022"
+    date: "11/12/2022",
+    id: 1,
 }
 export const data2 = {
     name: "Кристина Рудь",
@@ -61,7 +74,8 @@ export const data2 = {
     bms: 20,
     pressure: 80-120,
     heart: 'немає',
-    date: "11/12/2022"
+    date: "11/12/2022",
+    id:2,
 }
 
 export const data3 = {
@@ -74,7 +88,8 @@ export const data3 = {
     bms: 20,
     pressure: 80-120,
     heart: 'немає',
-    date: "11/12/2022"
+    date: "11/12/2022",
+    id: 3,
 }
 
 
