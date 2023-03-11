@@ -1,4 +1,4 @@
-import { API_URL } from "./config.js";
+const API_URL='https://ajax.test-danit.com/api/v2/cards';
 
 //Авторизация
 const logIn = async (email, password) => {
@@ -9,7 +9,12 @@ const logIn = async (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => response.text());
+    .then((response) => {
+      if(!response.ok){
+        throw new Error("Bad response from server");
+      }
+      return response.text();
+    });
 };
 
 export default logIn;
@@ -50,7 +55,7 @@ export const deleteCard = async (token, cardId) => {
 
  //Получение всех карточек
 export const getAllCards = async (token) => {
-  await fetch(API_URL, {
+  return await fetch(API_URL, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -61,7 +66,7 @@ export const getAllCards = async (token) => {
 
  //Получение одной карточки
 export const getCard = async (token, cardId) => {
-  await fetch(`${API_URL}/${cardId}`, {
+  return await fetch(`${API_URL}/${cardId}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,

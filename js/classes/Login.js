@@ -1,12 +1,15 @@
 import logIn from "../api/api.js";
 import { setTokenToLocalStorage } from "../api/api.js";
+import { getAllCards } from "../api/api.js";
+import { getCardsFunc } from "../functional/functional.js";
 
 export default class Login {
-  constructor(){
-  }
+  constructor() {}
 
   async handleSubmit(event) {
     event.preventDefault();
+    const btnLoad = document.querySelector("#sing-in");
+    btnLoad.innerHTML = "Завантаження...";
     if (!this.validate(event.currentTarget)) {
       return;
     }
@@ -15,10 +18,20 @@ export default class Login {
 
     try {
       const token = await logIn(email, password);
-      setTokenToLocalStorage(token);
+      if (token) {
+        btnLoad.innerHTML = "Вхід";
+        setTokenToLocalStorage(token);
+        getCardsFunc(await getAllCards(token));
+        ////////////////delete modal
+        document.querySelector(".modal-overlay").remove();
+        ////////////////
+      }
     } catch (error) {
-      console.error(error);
-      alert("Failed to log in");
+      ////////////////delete modal
+      btnLoad.innerHTML = "Вхід";
+      document.querySelector(".modal-overlay").remove();
+      ////////////////
+      alert("Невірно введені дані, спробуйте ще раз");
     }
   }
 
@@ -57,41 +70,30 @@ export default class Login {
   }
 
   render() {
-
     const form = document.createElement("form");
-    const labelLogin = document.createElement("label");
-    const emailInput = document.createElement("input");
-    const labelPass = document.createElement("label");
-    const passwordInput = document.createElement("input");
-    const iconEye = document.createElement("i");
     const submitButton = document.createElement("button");
 
     form.id = "login-form";
-    emailInput.type = "email";
-    emailInput.id = "email";
-    emailInput.placeholder = "Ваша пошта";
-    emailInput.required = true;
 
-    passwordInput.type = "password";
-    passwordInput.id = "password";
-    passwordInput.placeholder = "Ваш пароль";
-    passwordInput.required = true;
-
-    labelLogin.classList.add("input-wrapper");
-    labelPass.classList.add("input-wrapper");
-    iconEye.classList.add("bi", "bi-eye-fill");
+    form.insertAdjacentHTML(
+      "beforeend",
+      `<label class="input-wrapper">
+        <input type="email" id="email" placeholder="Ваша пошта" required="">
+      </label>
+      <label class="input-wrapper">
+        <input type="password" id="password" placeholder="Ваш пароль" required="">
+        <i class="bi bi-eye-fill"></i>
+      </label>`
+    );
 
     submitButton.type = "submit";
-    submitButton.id="sing-in";
+    submitButton.id = "sing-in";
     submitButton.textContent = "Вхід";
-
-    labelPass.append(passwordInput, iconEye);
-    labelLogin.append(emailInput);
 
     form.addEventListener("submit", this.handleSubmit.bind(this));
     form.addEventListener("click", this.showPassword.bind(this));
 
-    form.append(labelLogin, labelPass, submitButton);
+    form.append(submitButton);
 
     return form;
   }
