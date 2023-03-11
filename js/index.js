@@ -1,4 +1,4 @@
-import { data1, data2, data3 } from "./classes/Visit.js";
+import Visit, { data1, data2, data3 } from "./classes/Visit.js";
 import VisitDentist from "./classes/VisitDentist.js";
 import VisitCardiologist from "./classes/VisitCardiologist.js";
 import VisitTherapist from "./classes/VisitTherapist.js";
@@ -16,16 +16,22 @@ visit3.render(document.querySelector('.visit__list'));
 //logIn('kristina.rud5@gmail.com', '123456');
 
 const root = document.querySelector(".container");
-const modalLogin = new Modal().render(new Login().render());
-root.appendChild(modalLogin);
 
 //createCard(dataObj, '235ab8bf-e8e7-4ac9-ba7e-49b864771ddc');
 
-
 const loginBtn = document.querySelector(".btn-autorize");
-const modalOverlay = document.querySelector(".modal-overlay");
 
 loginBtn.addEventListener("click", () => {
+    const modalLogin = new Modal().render(new Login().render());
+    root.appendChild(modalLogin);
+
+    const modalOverlay = document.querySelector(".modal-overlay");
+    ///доработать модалку
     modalOverlay.style.display = "flex";
     console.log(root);
 });
+
+
+
+
+
