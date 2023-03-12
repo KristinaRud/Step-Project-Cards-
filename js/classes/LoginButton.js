@@ -1,5 +1,6 @@
 import AuthToken from "./AuthToken.js";
 import LoginModal from "./LoginModal.js";
+import Modal from "./Modal.js";
 
 export default class LoginButton {
 
@@ -32,6 +33,14 @@ export default class LoginButton {
     }
 
     static #openCreateVisitWindow() {
+        const root = document.querySelector(".container");
+        console.log("call");
+        if (!document.querySelector(".visit__wrapper")) {
+            console.log("here");
+            const createVisitModule = new Modal().render();
+            console.log(createVisitModule);
+            root.appendChild(createVisitModule);
+        }
 
     }
 }
