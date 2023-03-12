@@ -1,6 +1,6 @@
 
 import Requests from "./Requests.js";
-import {changedBtnAuth} from "../functional/functional.js";
+import LoginButton from "./LoginButton.js";
 
 export default class LoginModal {
   constructor() {}
@@ -35,9 +35,8 @@ export default class LoginModal {
 
       Requests.sendLogin(email, password)
           .then(() => {
-            const btn = document.querySelector('.btn-autorize');
-            const title = document.querySelector('.title-auth');
-            changedBtnAuth(btn, title);
+
+            LoginButton.updateButton();
 
             divClone.remove();
 
