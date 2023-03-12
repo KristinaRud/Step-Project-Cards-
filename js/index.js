@@ -2,10 +2,7 @@ import Visit, { data1, data2, data3 } from "./classes/Visit.js";
 import VisitDentist from "./classes/VisitDentist.js";
 import VisitCardiologist from "./classes/VisitCardiologist.js";
 import VisitTherapist from "./classes/VisitTherapist.js";
-import LoginModal from "./classes/LoginModal.js";
-import Modal from "./classes/Modal.js";
-import { changedBtnAuth, btnLogIn, getCardsFunc } from "./functional/functional.js";
-import AuthToken from "./classes/AuthToken.js";
+import LoginButton from "./classes/LoginButton.js";
 
 
 const visit = new VisitDentist(data1);
@@ -29,14 +26,7 @@ const title = document.querySelector('.title-auth');
 
 document.addEventListener("DOMContentLoaded", async()=>{
 
-       const authToken = AuthToken.getAuthTokenFromStorage();
-
-       if (authToken) {
-           changedBtnAuth(btn, title);
-           getCardsFunc(await getAllCards(authToken));
-       } else {
-           changedBtnAuth(btn, title);
-       }
+   LoginButton.updateButton();
 })
 
 
