@@ -1,3 +1,4 @@
+import {API_URL} from "../constants.js";
 
 //Авторизация
 const logIn = async (email, password) => {
@@ -59,7 +60,7 @@ export const deleteCard = async (token, cardId) => {
  //Получение всех карточек
 export const getAllCards = async (token) => {
   try{
-    return await fetch(API_URL, {
+   return  await fetch(API_URL, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
