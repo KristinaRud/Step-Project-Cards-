@@ -59,9 +59,24 @@ export default class LoginModal {
       document.querySelector(".wrapper-login").remove();
     })
 
+    const btnAuthorize = document.querySelector(".title-auth");
+
+
+    document.addEventListener('click', (event) => {
+
+      if (!divClone.contains(event.target) && event.target !== btnClose && event.target !== btnAuthorize) {
+
+        divClone.remove();
+      }
+    });
+
     form.addEventListener("click", this.showPassword.bind(this));
 
     return divClone;
+  }
+
+  #closeLoginModal() {
+    document.querySelector(".wrapper-login").remove();
   }
 
 }
