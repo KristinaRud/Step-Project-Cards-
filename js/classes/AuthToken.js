@@ -4,12 +4,7 @@ export default class AuthToken{
     }
 
     static getAuthTokenFromStorage() {
-        const authToken = localStorage.getItem("authToken");
+        return localStorage.getItem("authToken");
 
-        if (authToken === null) {
-            throw new Error("Auth Token not found")
-        } else {
-            return authToken;
-        }
     }
 }
