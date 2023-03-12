@@ -2,19 +2,21 @@ const API_URL='https://ajax.test-danit.com/api/v2/cards';
 
 //Авторизация
 const logIn = async (email, password) => {
-  return await fetch(`${API_URL}/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then((response) => {
-      if(!response.ok){
-        throw new Error("Bad response logIn from server");
-      }
-      return response.text();
-    });
+  try{
+    return await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => {
+        if(!response.ok){
+          throw new Error("Bad response logIn from server");
+        }
+        return response.text();
+      });
+  }catch (err){console.warn(err)}
 };
 
 export default logIn;
@@ -67,19 +69,21 @@ export const deleteCard = async (token, cardId) => {
 
  //Получение всех карточек
 export const getAllCards = async (token) => {
-  return await fetch(API_URL, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-  .then((response) => {
-    if(!response.ok){
-      throw new Error("Bad response getAllCards from server");
-    }else{
-      return response.json();
-    }
-  });
+  try{
+    return await fetch(API_URL, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      if(!response.ok){
+        throw new Error("Bad response getAllCards from server");
+      }else{
+        return response.json();
+      }
+    });
+  }catch (err){console.warn(err)}
 };
 
  //Получение одной карточки
