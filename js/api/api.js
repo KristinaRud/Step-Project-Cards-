@@ -1,4 +1,3 @@
-const API_URL='https://ajax.test-danit.com/api/v2/cards';
 
 //Авторизация
 const logIn = async (email, password) => {
@@ -18,16 +17,6 @@ const logIn = async (email, password) => {
 };
 
 export default logIn;
-
-//Сохранение токена в locasStorage
-export const setTokenToLocalStorage = (token) => {
-    localStorage.setItem("token", token);
-};
-
-//Получение токена из locasStorage
-export const getTokenFromLocalStorage = () => {
-    return localStorage.getItem("token");
-  };
 
  //Создание карточки
 export const createCard = async (dataObj, token) => {
