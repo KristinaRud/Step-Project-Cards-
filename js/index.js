@@ -19,12 +19,11 @@ const wrapperPlaceholder = document.querySelector(".wrapper-placeholder");
 
 document.addEventListener("DOMContentLoaded", () => {
    LoginButton.updateButton();
-
+   //
    //рендер карточек визита
-   if (listContainer.childNodes.length && AuthToken.getAuthTokenFromStorage()) {
-      wrapperPlaceholder.remove()
-   }
-      Api.getAllCards(AuthToken.getAuthTokenFromStorage()).then(data=> {
+   if (AuthToken.getAuthTokenFromStorage()) {
+      if (listContainer.childNodes.length) {wrapperPlaceholder.remove()}
+       Api.getAllCards(AuthToken.getAuthTokenFromStorage()).then(data=> {
          data.forEach((appointment) => {
             switch (appointment.doctor) {
                case "Кардіолог":
@@ -39,10 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
          });
       })
-
-
+   }
 })
-
 
 //console.log((async () => { await Api.sendLogin('kristina.rud5@gmail.com', '123456'); })());
 

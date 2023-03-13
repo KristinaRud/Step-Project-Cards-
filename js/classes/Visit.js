@@ -1,54 +1,63 @@
+import Api from "./Api.js";
+import AuthToken from "./AuthToken.js";
+
 export default class Visit {
-    constructor({name, doctor, goal, description, drop}) {
+    constructor({name, doctor, goal, description, drop, id}) {
         this.name = name;
         this.doctor = doctor;
         this.goal = goal;
         this.description = description;
         this.drop = drop;
+        this.id = id;
         this.template = document.querySelector(".visit").content;
         this.liTemplate = this.template.querySelector('li');
         this.li = this.liTemplate.cloneNode(true);
         this.infoVisit = this.li.querySelector('.text-wrapper');
         this.imgVisit = this.li.querySelector('.visit__img');
+        this.btnClose = this.li.querySelector('#btn-close');
     }
 
     render(container) {
-            const nameVisit = this.li.querySelector('.visit__title');
-            nameVisit.textContent = this.name;
+        const nameVisit = this.li.querySelector('.visit__title');
+        nameVisit.textContent = this.name;
 
-            const doctorVisit = this.li.querySelector('.visit__text-doctor');
-            doctorVisit.textContent = this.doctor;
+        const doctorVisit = this.li.querySelector('.visit__text-doctor');
+        doctorVisit.textContent = this.doctor;
 
-            container.prepend(this.li)
-            return this.li;
+        container.prepend(this.li)
+        this.btnClose.addEventListener('click', () => this.delete());
 
-     }
-    showMoreLess (textExtends='') {
+        return this.li;
+
+    }
+
+    showMoreLess(textExtends = '') {
         const btnMoreLess = this.li.querySelector('.visit-btn');
-        btnMoreLess.addEventListener('click', ()=>{
-            if (this.infoVisit.innerText === ''){
+        btnMoreLess.addEventListener('click', () => {
+            if (this.infoVisit.innerText === '') {
                 btnMoreLess.textContent = 'Приховати';
-                this.infoVisit.insertAdjacentHTML('beforeend',  `<p class="text__total">
+                this.infoVisit.insertAdjacentHTML('beforeend', `<p class="text__total">
                                    Мета: ${this.goal} . <br>
                                    Короткий опис: ${this.description}.<br>
                                    Терміновість: ${this.drop}.<br>
                                    </p>  ${textExtends}`);
             } else {
                 btnMoreLess.textContent = 'Показати більше';
-                this.infoVisit.textContent =''
-            }})
+                this.infoVisit.textContent = ''
+            }
+        })
     }
-    edit(){
+
+    edit() {
 
     }
 
-    delete (){
-      const btnClose = this.li.querySelector('#btn-close');
-      btnClose.addEventListener('click', ()=>{
-          ApiDelete(id).then(({status}) => {
+    delete() {
+        Api.deleteCard(AuthToken.getAuthTokenFromStorage(), this.id).then(({status}) => {
+            if (status === 200) {
                 this.li.remove();
-                 });
-      })
+            }
+        })
     }
 }
 export const data1 = {
@@ -59,7 +68,7 @@ export const data1 = {
     drop: "Терміново",
     age: 25,
     bms: 20,
-    pressure: 80-120,
+    pressure: 80 - 120,
     heart: 'немає',
     date: "11/12/2022",
     id: 1,
@@ -72,10 +81,10 @@ export const data2 = {
     drop: "Не терміново",
     age: 30,
     bms: 20,
-    pressure: 80-120,
+    pressure: 80 - 120,
     heart: 'немає',
     date: "11/12/2022",
-    id:2,
+    id: 2,
 }
 
 export const data3 = {
@@ -86,7 +95,7 @@ export const data3 = {
     drop: "Не терміново",
     age: 30,
     bms: 20,
-    pressure: 80-120,
+    pressure: 80 - 120,
     heart: 'немає',
     date: "11/12/2022",
     id: 3,

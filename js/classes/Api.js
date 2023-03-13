@@ -50,6 +50,7 @@ export default class Api {
             },
         })
             .then((response) => {
+                console.log(response)
                 if (!response.ok) {
                     throw new Error("Bad response deleteCard from server");
                 } else {
