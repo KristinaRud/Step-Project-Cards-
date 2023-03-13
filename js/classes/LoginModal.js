@@ -1,6 +1,7 @@
 
-import Requests from "./Requests.js";
 import LoginButton from "./LoginButton.js";
+import Api from "./Api.js";
+import AuthToken from "./AuthToken.js";
 
 export default class LoginModal {
   constructor() {}
@@ -29,15 +30,15 @@ export default class LoginModal {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const email = form.querySelector("#login-input").value;
-      const password = form.querySelector("#password").value;
+      const email = form.email.value;
+      const password = form.password.value;
 
 
-      Requests.sendLogin(email, password)
-          .then(() => {
-
+        Api.logIn(email, password)
+          .then((res) => {
+            AuthToken.setTokenToLocalStorage(res);
+            console.log(res);
             LoginButton.updateButton();
-
             divClone.remove();
 
           })
@@ -49,6 +50,8 @@ export default class LoginModal {
               form.append(errorMessage);
             }
           })
+            
+      
     });
 
     const btnClose = form.querySelector(".login-cancel");
