@@ -1,7 +1,7 @@
-
 import LoginButton from "./LoginButton.js";
 import Api from "./Api.js";
 import AuthToken from "./AuthToken.js";
+import { renderCards } from "../render.js";
 
 export default class LoginModal {
   constructor() {}
@@ -26,31 +26,28 @@ export default class LoginModal {
     const divClone = div.cloneNode(true);
     const form = divClone.querySelector("form");
 
-
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
       const email = form.email.value;
       const password = form.password.value;
 
-
-        Api.logIn(email, password)
-          .then((res) => {
-            AuthToken.setTokenToLocalStorage(res);
-            console.log(res);
-            LoginButton.updateButton();
-            divClone.remove();
-
-          })
-          .catch((error) => {
-            if (!form.querySelector(".error-message")) {
-              const errorMessage = document.createElement("p");
-              errorMessage.textContent = error.message;
-              errorMessage.classList.add("error-message");
-              form.append(errorMessage);
-            }
-          })
-            
+      Api.logIn(email, password)
+        .then((res) => {
+          AuthToken.setTokenToLocalStorage(res);
+          console.log(res);
+          LoginButton.updateButton();
+          divClone.remove();
+          renderCards();
+        })
+        .catch((error) => {
+          if (!form.querySelector(".error-message")) {
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = error.message;
+            errorMessage.classList.add("error-message");
+            form.append(errorMessage);
+          }
+        });
       
     });
 
@@ -59,15 +56,16 @@ export default class LoginModal {
     btnClose.addEventListener("click", (event) => {
       event.preventDefault();
       document.querySelector(".wrapper-login").remove();
-    })
+    });
 
     const btnAuthorize = document.querySelector(".title-auth");
 
-
-    document.addEventListener('click', (event) => {
-
-      if (!divClone.contains(event.target) && event.target !== btnClose && event.target !== btnAuthorize) {
-
+    document.addEventListener("click", (event) => {
+      if (
+        !divClone.contains(event.target) &&
+        event.target !== btnClose &&
+        event.target !== btnAuthorize
+      ) {
         divClone.remove();
       }
     });
@@ -80,5 +78,4 @@ export default class LoginModal {
   #closeLoginModal() {
     document.querySelector(".wrapper-login").remove();
   }
-
 }
