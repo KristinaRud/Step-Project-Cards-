@@ -18,7 +18,7 @@
     box-shadow: 0px 1px 4px rgb(60 60 60 / 15%);
     z-index: 200;
     padding: 16px;
-    max-width: 34vw;
+    max-width: 35vw;
     min-width: 300px;
     position: absolute;
     margin-left: auto;
@@ -30,14 +30,14 @@
 }
 
 
-.login-title, .modal label {
+.login-title{
     color: rgba(13,56,87,1.00);
     margin: 20px auto;
     font-size: 14px;
 
 
 }
-.login-input, .modal input, textarea {
+.login-input {
     background-color: rgba(243,245,245,1.00);
     border-radius: 4px;
     font-size: 14px;
@@ -83,15 +83,45 @@ opacity: 0.5;
     border: none;
     padding: 5px 10px;
     outline:none;
-    width: 15vw;
+    width: 25vw;
+    margin: 10px 0 ;
+    min-width: 260px;
 }
 .doctor-select-wrapper {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 10px;
 
 }
 .fields-container {
     margin-top: 15px;
 }
 
+.modal input, textarea{
+    background-color: rgba(243,245,245,1.00);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 16px;
+    color:rgba(13,56,87,1.00);
+    padding: 10px;
+    width: 25vw;
+    min-width: 260px;
+    border: 0 solid white;
+    outline:none;
+    margin-bottom: 10px;
+}
+.modal label {
+    color: rgba(13,56,87,1.00);
+      font-size: 14px;
+
+}
+.fields-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal button{
+    width: 11.5vw;
+    margin: 1vh 1vw;
+}

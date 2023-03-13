@@ -2,12 +2,12 @@ import Api from "./Api.js";
 import AuthToken from "./AuthToken.js";
 
 export default class Visit {
-    constructor({name, doctor, goal, description, drop, id}) {
-        this.name = name;
+    constructor({fullName, doctor, purpose, description, urgency, id}) {
+        this.fullName = fullName;
         this.doctor = doctor;
-        this.goal = goal;
+        this.purpose = purpose;
         this.description = description;
-        this.drop = drop;
+        this.urgency = urgency;
         this.id = id;
         this.template = document.querySelector(".visit").content;
         this.liTemplate = this.template.querySelector('li');
@@ -19,7 +19,7 @@ export default class Visit {
 
     render(container) {
         const nameVisit = this.li.querySelector('.visit__title');
-        nameVisit.textContent = this.name;
+        nameVisit.textContent = this.fullName;
 
         const doctorVisit = this.li.querySelector('.visit__text-doctor');
         doctorVisit.textContent = this.doctor;
@@ -37,9 +37,9 @@ export default class Visit {
             if (this.infoVisit.innerText === '') {
                 btnMoreLess.textContent = 'Приховати';
                 this.infoVisit.insertAdjacentHTML('beforeend', `<p class="text__total">
-                                   Мета: ${this.goal} . <br>
+                                   Мета: ${this.purpose} . <br>
                                    Короткий опис: ${this.description}.<br>
-                                   Терміновість: ${this.drop}.<br>
+                                   Терміновість: ${this.urgency}.<br>
                                    </p>  ${textExtends}`);
             } else {
                 btnMoreLess.textContent = 'Показати більше';
@@ -52,8 +52,8 @@ export default class Visit {
 
     }
 
-    delete() {
-        Api.deleteCard(AuthToken.getAuthTokenFromStorage(), this.id).then(({status}) => {
+     delete() {
+      Api.deleteCard(AuthToken.getAuthTokenFromStorage(), this.id).then(({status}) => {
             if (status === 200) {
                 this.li.remove();
             }
