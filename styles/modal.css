@@ -55,6 +55,12 @@
     color:#6B7D8E;
     font-size: 12px;
 }
+.login-eys {
+    position: absolute;
+    top: 165px;
+    right: 30px;
+opacity: 0.5;
+}
 #login-submit, .login-cancel, .modal button{
     background-color: rgba(108,134,152,1.00);
     padding: 16px 8px;

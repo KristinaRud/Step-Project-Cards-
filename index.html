@@ -18,15 +18,9 @@
         <div class="wrapper-login">
             <form class="form-login">
                 <h3 class="login-title">Вхід у особистий кабінет</h3>
-                <label class="input-wrapper">
                     <input class="login-input" name="email" type="email" placeholder="Логін" id="login-input" required/>
-                  </label>
-                  <label class="input-wrapper">
-                    <input class="login-input" name="password" type="password" placeholder="Пароль" id="password" required/>
-                    <i class="bi bi-eye-fill"></i>
-                  </label>
-                <!-- <input class="login-input" name="email" type="email" placeholder="Логін" id="login-input" required/> 
-                <input class="login-input" name="password" type="password" placeholder="Пароль" id="password" required/> -->
+                    <input class="login-input" name="password" type="password" placeholder="Пароль" id=password"" required/>
+                    <i class="bi bi-eye-fill login-eys"></i>
                 <input id="login-submit" name="submit" type="submit" value="Далі"/>
                 <button class="login-cancel" type="submit">Відміна</button>
             </form>
@@ -78,8 +72,10 @@
 </header>
 <main>
     <div class="container placeholder" id="main">
+        <div class="wrapper-placeholder">
         <p class="placeholder__text">Тут буде історія візитів.</p>
         <img class="placeholder__img" src="images/placeholder.png" alt="placeholder">
+        </div>
         <ul class="visit__list">
             <template class="visit">
                 <li class="visit__menu text">
