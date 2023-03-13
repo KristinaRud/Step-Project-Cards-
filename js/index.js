@@ -7,6 +7,7 @@ import Modal from "./classes/Modal.js";
 import AuthToken from "./classes/AuthToken.js";
 import Api from "./classes/Api.js";
 import api from "./api/api.js";
+import { renderCards } from "./render.js";
 
 //logIn('kristina.rud5@gmail.com', '123456');
 
@@ -21,24 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
    LoginButton.updateButton();
    //
    //рендер карточек визита
-   if (AuthToken.getAuthTokenFromStorage()) {
-      if (listContainer.childNodes.length) {wrapperPlaceholder.remove()}
-       Api.getAllCards(AuthToken.getAuthTokenFromStorage()).then(data=> {
-         data.forEach((appointment) => {
-            switch (appointment.doctor) {
-               case "Кардіолог":
-                  new VisitCardiologist(appointment).render(listContainer);
-                  break;
-               case "Стоматолог":
-                  new VisitDentist(appointment).render(listContainer);
-                  break;
-               case "Терапевт":
-                  new VisitTherapist(appointment).render(listContainer);
-                  break;
-            }
-         });
-      })
-   }
+   renderCards();
 })
 
 //console.log((async () => { await Api.sendLogin('kristina.rud5@gmail.com', '123456'); })());
