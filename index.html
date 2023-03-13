@@ -17,8 +17,15 @@
         <div class="wrapper-login">
             <form class="form-login">
                 <h3 class="login-title">Вхід у особистий кабінет</h3>
-                <input class="login-input" name="email" type="email" placeholder="Логін" id="login-input" required/>
-                <input class="login-input" name="password" type="password" placeholder="Пароль" id="password" required/>
+                <label class="input-wrapper">
+                    <input class="login-input" name="email" type="email" placeholder="Логін" id="login-input" required/>
+                  </label>
+                  <label class="input-wrapper">
+                    <input class="login-input" name="password" type="password" placeholder="Пароль" id="password" required/>
+                    <i class="bi bi-eye-fill"></i>
+                  </label>
+                <!-- <input class="login-input" name="email" type="email" placeholder="Логін" id="login-input" required/> 
+                <input class="login-input" name="password" type="password" placeholder="Пароль" id="password" required/> -->
                 <input id="login-submit" name="submit" type="submit" value="Далі"/>
                 <button class="login-cancel" type="submit">Відміна</button>
             </form>
@@ -35,6 +42,10 @@
             <button class="btn btn-autorize">
                 <i class="bi bi-person-fill"></i>
                 <span class="title-auth">Особистий кабінет</span>
+            </button>
+            <button class="btn btn-create hide">
+                <i class="bi bi-pencil-square"></i>
+                <span class="title-auth">Створити візит</span>
             </button>
             <button class="btn btn-lang">
                 <i class="bi bi-globe"></i>

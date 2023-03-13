@@ -44,10 +44,10 @@ header{
     
 }
 
-.btn-autorize{
+.btn-autorize, .btn-create{
     color: #95A8B5;
 }
-.btn-autorize:active{
+.btn-autorize:active, .btn-create:active{
     color:rgb(108, 134, 152);
 }
 
@@ -118,6 +118,10 @@ header{
     border: none;
     border-radius: 10px;
     height: 30px;
+}
+
+.hide{
+    display: none;
 }
 
 /*filter-section*/
