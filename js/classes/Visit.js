@@ -2,8 +2,8 @@ import Api from "./Api.js";
 import AuthToken from "./AuthToken.js";
 
 export default class Visit {
-    constructor({fullName, doctor, purpose, description, urgency, id}) {
-        this.fullName = fullName;
+    constructor({name, doctor, purpose, description, urgency, id}) {
+        this.name = name;
         this.doctor = doctor;
         this.purpose = purpose;
         this.description = description;
@@ -19,7 +19,7 @@ export default class Visit {
 
     render(container) {
         const nameVisit = this.li.querySelector('.visit__title');
-        nameVisit.textContent = this.fullName;
+        nameVisit.textContent = this.name;
 
         const doctorVisit = this.li.querySelector('.visit__text-doctor');
         doctorVisit.textContent = this.doctor;

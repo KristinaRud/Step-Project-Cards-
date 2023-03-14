@@ -230,7 +230,12 @@ main{
 .visit__img{
     -webkit-user-select: none;
     background-color: hsl(0, 0%, 90%);
-    transition: background-color 300ms;
+/    transition: background-color 300ms;
+}
+.visit__img:active{
+    -webkit-user-select: none;
+    background-color: rgba(108,134,152,60%);
+    transition: background-color300ms;
 }
 .visit-btn{
     background-color: hsl(0, 0%, 90%);
@@ -245,17 +250,15 @@ main{
     flex-direction: column;
     gap: 10px;
 }
-#btn-close{
+#btn-close, #btn-edit{
     fill: rgba(108,134,152,1.00);
    background-color:  hsl(0, 0%, 90%);
     cursor: pointer;
 }
-#btn-edit {
-    fill: rgba(108,134,152,1.00);
-    background-color:  hsl(0, 0%, 90%);
-    cursor: pointer;
-
-}
+/*#icon-done{*/
+/*    fill: green;*/
+/*    max-width: 28px;*/
+/*}*/
 .text__total, .text__cardiologist, .text__therapist, .text__dentist {
     margin-top: 10px;
     color: rgb(108, 134, 152);

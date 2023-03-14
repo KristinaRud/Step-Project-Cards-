@@ -116,9 +116,11 @@ export default class Modal {
         const specDiv = document.createElement("div");
         specDiv.className = "doctor-specific-wrapper";
 
-        doctorSelectWrapper.addEventListener("change", (event) => {
-            const doctor = event.target.value;
+        doctorSelectWrapper.addEventListener("change", ({target}) => {
+            const doctor = target.value;
 
+            if (target.matches('#doctor-select')) {
+                specDiv.innerHTML = ""
             switch (doctor) {
                 case "dentist": {
                     const lastVisitDateLabel = document.createElement("label");
@@ -175,7 +177,7 @@ export default class Modal {
                 }
 
 
-            }
+            }}
         })
 
         const createBtn = document.createElement("button");
