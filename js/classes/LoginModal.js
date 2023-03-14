@@ -1,7 +1,7 @@
 import LoginButton from "./LoginButton.js";
 import Api from "./Api.js";
-import AuthToken from "./AuthToken.js";
 import { renderCards } from "../render.js";
+import { setToken } from "./Api.js";
 
 export default class LoginModal {
   constructor() {}
@@ -34,7 +34,7 @@ export default class LoginModal {
 
       Api.logIn(email, password)
         .then((res) => {
-          AuthToken.setTokenToLocalStorage(res);
+          setToken(res);
           console.log(res);
           LoginButton.updateButton();
           divClone.remove();

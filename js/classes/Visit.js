@@ -1,5 +1,4 @@
 import Api from "./Api.js";
-import AuthToken from "./AuthToken.js";
 
 export default class Visit {
     constructor({name, doctor, purpose, description, urgency, id}) {
@@ -52,9 +51,11 @@ export default class Visit {
 
     }
 
-     delete() {
-      Api.deleteCard(AuthToken.getAuthTokenFromStorage(), this.id).then(({status}) => {
-            if (status === 200) {
+    delete() {
+        //console.log(this.li);
+        Api.deleteCard(this.id).then((res) => {
+            console.log(res);
+            if (res.ok) {
                 this.li.remove();
             }
         })
