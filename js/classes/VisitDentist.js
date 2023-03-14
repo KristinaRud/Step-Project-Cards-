@@ -1,9 +1,9 @@
 import Visit from "./Visit.js";
 
 export default class VisitDentist extends Visit {
-    constructor({date, name, doctor, goal, description, drop, id}) {
-        super({name, doctor, goal, description, drop, id});
-        this.date = date;
+    constructor({lastDate, fullName, doctor, purpose, description, urgency, id}) {
+        super({fullName, doctor, purpose, description, urgency, id});
+        this.lastDate = lastDate;
     }
 
     render(container) {
