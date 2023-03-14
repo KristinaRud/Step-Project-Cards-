@@ -1,4 +1,3 @@
-import AuthToken from "./classes/AuthToken.js";
 import Api from "./classes/Api.js";
 import VisitDentist from "./classes/VisitDentist.js";
 import VisitCardiologist from "./classes/VisitCardiologist.js";

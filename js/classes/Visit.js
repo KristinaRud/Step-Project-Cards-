@@ -1,5 +1,4 @@
 import Api from "./Api.js";
-import AuthToken from "./AuthToken.js";
 
 export default class Visit {
     constructor({fullName, doctor, purpose, description, urgency, id}) {

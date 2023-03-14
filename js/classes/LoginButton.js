@@ -1,4 +1,3 @@
-import AuthToken from "./AuthToken.js";
 import LoginModal from "./LoginModal.js";
 import Modal from "./Modal.js";
 import { token } from "./Api.js";
@@ -13,7 +12,6 @@ export default class LoginButton {
         btnLogin.addEventListener('click', this.#openLoginWindow);
         btnCreateVisit.addEventListener('click', this.#openCreateVisitWindow);
 
-        //const authToken = AuthToken.getAuthTokenFromStorage();
         if (token) {
             btnLogin.classList.add('hide');
             btnCreateVisit.classList.remove('hide')

@@ -1,6 +1,5 @@
 import LoginButton from "./LoginButton.js";
 import Api from "./Api.js";
-import AuthToken from "./AuthToken.js";
 import { renderCards } from "../render.js";
 import { setToken } from "./Api.js";
 
