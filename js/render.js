@@ -3,15 +3,16 @@ import Api from "./classes/Api.js";
 import VisitDentist from "./classes/VisitDentist.js";
 import VisitCardiologist from "./classes/VisitCardiologist.js";
 import VisitTherapist from "./classes/VisitTherapist.js";
+import { token } from "./classes/Api.js";
 
 export const renderCards = () => {
   const listContainer = document.querySelector(".visit__list");
   const wrapperPlaceholder = document.querySelector(".wrapper-placeholder");
-  if (AuthToken.getAuthTokenFromStorage()) {
+  if (token) {
     if (listContainer.childNodes.length) {
       wrapperPlaceholder.remove();
     }
-    Api.getAllCards(AuthToken.getAuthTokenFromStorage()).then((data) => {
+    Api.getAllCards().then((data) => {
       data.forEach((appointment) => {
         switch (appointment.doctor) {
           case "Кардіолог":

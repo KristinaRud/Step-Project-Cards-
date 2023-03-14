@@ -4,10 +4,10 @@ import VisitCardiologist from "./classes/VisitCardiologist.js";
 import VisitTherapist from "./classes/VisitTherapist.js";
 import LoginButton from "./classes/LoginButton.js";
 import Modal from "./classes/Modal.js";
-import AuthToken from "./classes/AuthToken.js";
 import Api from "./classes/Api.js";
 import api from "./api/api.js";
 import { renderCards } from "./render.js";
+import { setToken } from "./classes/Api.js";
 
 //logIn('kristina.rud5@gmail.com', '123456');
 
@@ -19,6 +19,9 @@ const listContainer = document.querySelector(".visit__list");
 const wrapperPlaceholder = document.querySelector(".wrapper-placeholder");
 
 document.addEventListener("DOMContentLoaded", () => {
+   if(localStorage.getItem("authToken")){
+      setToken(localStorage.getItem("authToken"));
+   }
    LoginButton.updateButton();
    //
    //рендер карточек визита

@@ -1,5 +1,11 @@
 import { API_URL } from "../constants.js";
 
+export let token;
+export const setToken = (newToken) => {
+    token = newToken;
+    localStorage.setItem('authToken', token);
+};
+
 export default class Api {
     //Авторизация
     static logIn = async (email, password) => {
@@ -23,7 +29,7 @@ export default class Api {
 
 
     //Создание карточки
-    static createCard = async (dataObj, token) => {
+    static createCard = async (dataObj) => {
         await fetch(API_URL, {
             method: "POST",
             headers: {
@@ -42,8 +48,8 @@ export default class Api {
     };
 
     //Удаление карточки
-    static deleteCard = async (token, cardId) => {
-        await fetch(`${API_URL}/${cardId}`, {
+    static deleteCard = async (cardId) => {
+        return await fetch(`${API_URL}/${cardId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -54,13 +60,13 @@ export default class Api {
                 if (!response.ok) {
                     throw new Error("Bad response deleteCard from server");
                 } else {
-                    return response.json();
+                    return response;
                 }
             });
     };
 
     //Получение всех карточек
-    static getAllCards = async (token) => {
+    static getAllCards = async () => {
         try {
             return await fetch(API_URL, {
                 method: "GET",
@@ -79,7 +85,7 @@ export default class Api {
     };
 
     //Получение одной карточки
-    static getCard = async (token, cardId) => {
+    static getCard = async (cardId) => {
         return await fetch(`${API_URL}/${cardId}`, {
             method: "GET",
             headers: {

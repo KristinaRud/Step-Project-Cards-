@@ -53,8 +53,11 @@ export default class Visit {
     }
 
     delete() {
-        Api.deleteCard(AuthToken.getAuthTokenFromStorage(), this.id).then(({status}) => {
-            if (status === 200) {
+        //console.log(this.li);
+        Api.deleteCard(this.id).then((res) => {
+            console.log(res);
+            if (res.ok) {
+                console.log("hello",this);
                 this.li.remove();
             }
         })
