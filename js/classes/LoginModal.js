@@ -1,7 +1,8 @@
 import LoginButton from "./LoginButton.js";
 import Api from "./Api.js";
 import { renderCards } from "../render.js";
-import { setToken } from "./Api.js";
+import { setToken, token } from "./Api.js";
+import { data1 } from "./Visit.js";
 
 export default class LoginModal {
   constructor() {}
@@ -48,6 +49,8 @@ export default class LoginModal {
             form.append(errorMessage);
           }
         });
+
+        
       
     });
 

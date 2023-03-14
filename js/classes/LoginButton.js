@@ -1,6 +1,8 @@
 import LoginModal from "./LoginModal.js";
 import Modal from "./Modal.js";
-import { token } from "./Api.js";
+import Api from "./Api.js";
+import{ token, setToken } from "./Api.js";
+import { data1 } from "./Visit.js";
 
 export default class LoginButton {
 

@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
    //
    //рендер карточек визита
    renderCards();
+
+   Api.createCard(data1, token).then(res=>console.log(res));
 })
 //console.log((async () => { await Api.sendLogin('kristina.rud5@gmail.com', '123456'); })());
 
