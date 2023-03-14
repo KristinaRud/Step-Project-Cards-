@@ -118,9 +118,6 @@ export default class Modal {
 
         doctorSelectWrapper.addEventListener("change", (event) => {
             const doctor = event.target.value;
-            specDiv.innerHTML = "";
-
-
 
             switch (doctor) {
                 case "dentist": {
