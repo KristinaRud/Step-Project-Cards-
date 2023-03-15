@@ -52,9 +52,7 @@ export default class Visit {
     }
 
     delete() {
-        //console.log(this.li);
         Api.deleteCard(this.id).then((res) => {
-            console.log(res);
             if (res.ok) {
                 this.li.remove();
             }
