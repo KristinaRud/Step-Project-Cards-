@@ -10,23 +10,21 @@ export default class Utils {
     }
 
      showAllCards() {
-        if (token) {
+                if (token) {
             if (this.listContainer.childNodes.length) {
                 this.wrapperPlaceholder.remove();
             }
             Api.getAllCards().then((data) => {
                 data.forEach((appointment) => {
-                    this.#chooseDoctor(appointment)
+                    this.chooseRenderDoctor(appointment)
                 });
             });
         }
     }
 
-    static showCard() {
 
-    }
 
-     #chooseDoctor(data) {
+     chooseRenderDoctor(data) {
         switch (data.doctor) {
             case "Кардіолог":
                 new VisitCardiologist(data).render(this.listContainer);

@@ -1,8 +1,7 @@
 import LoginModal from "./LoginModal.js";
 import Modal from "./Modal.js";
-import Api from "./Api.js";
-import{ token, setToken } from "./Api.js";
-import { data1 } from "./Visit.js";
+import {token} from "./Api.js";
+import {root} from "../constants.js";
 
 export default class LoginButton {
 
@@ -17,7 +16,7 @@ export default class LoginButton {
         if (token) {
             btnLogin.classList.add('hide');
             btnCreateVisit.classList.remove('hide')
-            
+
 
         } else {
             btnLogin.classList.remove('hide');
@@ -26,8 +25,6 @@ export default class LoginButton {
     }
 
     static #openLoginWindow() {
-        const root = document.querySelector(".container");
-
         if (!document.querySelector(".wrapper-login")) {
             const modalLogin = new LoginModal().render();
             root.appendChild(modalLogin);
@@ -35,11 +32,8 @@ export default class LoginButton {
     }
 
     static #openCreateVisitWindow() {
-        const root = document.querySelector(".container");
-        console.log("call");
         if (!document.querySelector(".visit__wrapper")) {
             const createVisitModule = new Modal().render();
-            console.log(createVisitModule);
             root.appendChild(createVisitModule);
         }
 

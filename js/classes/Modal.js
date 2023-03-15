@@ -196,7 +196,4 @@ export default class Modal {
 
     }
 
-
-
-
 }

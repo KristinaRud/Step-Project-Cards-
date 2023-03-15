@@ -1,6 +1,8 @@
 import LoginButton from "./classes/LoginButton.js";
 import { setToken } from "./classes/Api.js";
 import Utils from "./classes/Utils.js";
+import {data2, data1, data3} from "./classes/Visit.js";
+import Api from "./classes/Api.js";
 
 //logIn('kristina.rud5@gmail.com', '123456');
 
@@ -15,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
    //рендер карточек визита
    new Utils().showAllCards();
 })
+
+// Api.createCard(data1).then(data=>{ console.log(data); new Utils().chooseRenderDoctor(data)})
+// Api.createCard(data1).then(data=>{ console.log(data); new Utils().chooseRenderDoctor(data)})
+//
+// Api.createCard(data3).then(data=>{ console.log(data); new Utils().chooseRenderDoctor(data)})
 
 
 
