@@ -29,8 +29,8 @@ export default class Api {
 
 
     //Создание карточки
-    static createCard = async (dataObj) => {
-        await fetch(API_URL, {
+    static createCard = async (dataObj, token) => {
+       return await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -39,6 +39,7 @@ export default class Api {
             body: JSON.stringify(dataObj),
         })
             .then((response) => {
+                console.log(response);
                 if (!response.ok) {
                     throw new Error("Bad response createCard from server");
                 } else {
