@@ -33,7 +33,7 @@ export default class LoginButton {
 
     static #openCreateVisitWindow() {
         if (!document.querySelector(".visit__wrapper")) {
-            const createVisitModule = new Modal().render();
+            const createVisitModule = new Modal().render('', {});
             root.appendChild(createVisitModule);
         }
 

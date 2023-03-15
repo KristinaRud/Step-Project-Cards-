@@ -67,8 +67,15 @@ export default class Visit {
 
     edit() {
         const modalForm = new Modal()
-        root.append(modalForm.render())
-        modalForm.createButton.textContent = "Редагувати";
+        Api.getCard(this.id).then((data)=>    {
+            root.append(modalForm.render(this.id,data));
+            modalForm.createButton.textContent = "Редагувати";
+
+        }
+
+
+    )
+
 
     }
 
