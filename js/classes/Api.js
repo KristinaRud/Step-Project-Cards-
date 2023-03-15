@@ -29,17 +29,16 @@ export default class Api {
 
 
     //Создание карточки
-    static createCard = async (dataObj, token) => {
+    static createCard = async (dataObj) => {
        return await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
             },
             body: JSON.stringify(dataObj),
         })
             .then((response) => {
-                console.log(response);
                 if (!response.ok) {
                     throw new Error("Bad response createCard from server");
                 } else {
@@ -57,7 +56,6 @@ export default class Api {
             },
         })
             .then((response) => {
-                console.log(response)
                 if (!response.ok) {
                     throw new Error("Bad response deleteCard from server");
                 } else {

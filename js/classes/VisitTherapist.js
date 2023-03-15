@@ -1,8 +1,8 @@
 import Visit from "./Visit.js";
 
 export default class VisitTherapist extends Visit {
-    constructor({age, name, doctor, purpose, description, urgency, id}) {
-        super({name, doctor, purpose, description, urgency, id});
+    constructor({age, fullName, doctor, purpose, description, urgency, id, date}) {
+        super({fullName, doctor, purpose, description, urgency, id, date});
         this.age = age;
     }
 

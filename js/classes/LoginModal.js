@@ -1,8 +1,7 @@
 import LoginButton from "./LoginButton.js";
 import Api from "./Api.js";
-import { renderCards } from "../render.js";
-import { setToken, token } from "./Api.js";
-import { data1 } from "./Visit.js";
+import { setToken } from "./Api.js";
+import Utils from "./Utils.js";
 
 export default class LoginModal {
   constructor() {}
@@ -39,7 +38,7 @@ export default class LoginModal {
           console.log(res);
           LoginButton.updateButton();
           divClone.remove();
-          renderCards();
+          new Utils().showAllCards();
         })
         .catch((error) => {
           if (!form.querySelector(".error-message")) {
@@ -49,8 +48,6 @@ export default class LoginModal {
             form.append(errorMessage);
           }
         });
-
-        
       
     });
 

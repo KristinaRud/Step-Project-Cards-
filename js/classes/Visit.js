@@ -1,60 +1,79 @@
 import Api from "./Api.js";
+import Modal from "./Modal.js";
+import {root} from "../constants.js";
 
 export default class Visit {
-    constructor({name, doctor, purpose, description, urgency, id}) {
-        this.name = name;
+    constructor({fullName, doctor, purpose, description, urgency, id, date}) {
+        this.fullName = fullName;
         this.doctor = doctor;
         this.purpose = purpose;
         this.description = description;
         this.urgency = urgency;
         this.id = id;
+        this.date = date;
         this.template = document.querySelector(".visit").content;
         this.liTemplate = this.template.querySelector('li');
         this.li = this.liTemplate.cloneNode(true);
         this.infoVisit = this.li.querySelector('.text-wrapper');
         this.imgVisit = this.li.querySelector('.visit__img');
         this.btnClose = this.li.querySelector('#btn-close');
+        this.btnEdit = this.li.querySelector('#btn-edit');
+        this.iconDone = this.li.querySelector(".icon-done");
+        this.btnMoreLess = this.li.querySelector('.visit-btn');
+
     }
 
     render(container) {
+        const dateCurrent = new Date().toLocaleDateString();
+
         const nameVisit = this.li.querySelector('.visit__title');
-        nameVisit.textContent = this.name;
+        nameVisit.textContent = this.fullName;
 
         const doctorVisit = this.li.querySelector('.visit__text-doctor');
         doctorVisit.textContent = this.doctor;
 
         container.prepend(this.li)
         this.btnClose.addEventListener('click', () => this.delete());
+        this.btnEdit.addEventListener('click', ()=>this.edit());
+
+        if (this.date < dateCurrent) {
+            nameVisit.style.color = '#15a415';
+            this.li.dataset.status = "done";
+            this.imgVisit.classList.add('active');
+            this.iconDone.style.display = "block";
+            this.li.style.border = "1px solid rgba(21, 164, 21, 20%)"
+        }
 
         return this.li;
 
     }
 
     showMoreLess(textExtends = '') {
-        const btnMoreLess = this.li.querySelector('.visit-btn');
-        btnMoreLess.addEventListener('click', () => {
+
+        this.btnMoreLess.addEventListener('click', () => {
             if (this.infoVisit.innerText === '') {
-                btnMoreLess.textContent = 'Приховати';
+                this.btnMoreLess.textContent = 'Приховати';
                 this.infoVisit.insertAdjacentHTML('beforeend', `<p class="text__total">
                                    Мета: ${this.purpose} . <br>
                                    Короткий опис: ${this.description}.<br>
                                    Терміновість: ${this.urgency}.<br>
                                    </p>  ${textExtends}`);
             } else {
-                btnMoreLess.textContent = 'Показати більше';
+                this.btnMoreLess.textContent = 'Показати більше';
                 this.infoVisit.textContent = ''
             }
         })
     }
 
     edit() {
+        const modalForm = new Modal()
+        root.append(modalForm.render())
+        modalForm.createButton.textContent = "Редагувати";
 
     }
 
     delete() {
-        //console.log(this.li);
         Api.deleteCard(this.id).then((res) => {
-            console.log(res);
             if (res.ok) {
                 this.li.remove();
             }
@@ -62,44 +81,46 @@ export default class Visit {
     }
 }
 export const data1 = {
-    name: "Оксана Земляна",
+    fullName: "Оксана Земляна",
     doctor: "Стоматолог",
     purpose: "Огляд",
     description: "Болить зуб",
     urgency: "Невідкладний",
+    date: '14.03.2023',
     age: 25,
-    bms: 20,
+    index: 20,
     pressure: 80 - 120,
-    heart: 'немає',
-    date: "11/12/2022",
-    id: 1,
+    diseases: 'немає',
+    lastDate: "11/12/2022",
+    // id: 1,
 }
 export const data2 = {
-    name: "Кристина Рудь",
+    fullName: "Кристина Рудь",
     doctor: "Кардіолог",
     purpose: "Огляд",
     description: "Високе серцебиття",
-    urgency: "Звичайний",
+    urgency: "Не терміново",
+    date: '14.03.2023',
     age: 30,
-    bms: 20,
+    index: 20,
     pressure: 80 - 120,
-    heart: 'немає',
-    date: "11/12/2022",
-    id: 2,
+    diseases: 'немає',
+    lastDate: "11/12/2022",
+    // id: 2,
 }
-
 export const data3 = {
-    name: "Данил Денк",
+    fullName: "Иван Иван",
     doctor: "Терапевт",
-    goal: "Огляд",
-    description: "Планове",
-    drop: "Не терміново",
+    purpose: "Огляд",
+    description: "Високе серцебиття",
+    urgency: "Не терміново",
+    date: '16.03.2023',
     age: 30,
-    bms: 20,
+    index: 20,
     pressure: 80 - 120,
-    heart: 'немає',
-    date: "11/12/2022",
-    id: 3,
+    diseases: 'немає',
+    lastDate: "11/12/2022",
+    // id: 2,
 }
 
 
