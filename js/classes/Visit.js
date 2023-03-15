@@ -66,7 +66,9 @@ export default class Visit {
     }
 
     edit() {
-            root.append(new Modal().render())
+        const modalForm = new Modal()
+        root.append(modalForm.render())
+        modalForm.createButton.textContent = "Редагувати";
 
     }
 

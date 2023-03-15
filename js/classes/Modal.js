@@ -2,7 +2,7 @@ export default class Modal {
     constructor() {
         this.doctorSelect = null;
         this.fieldsContainer = null;
-        this.createButton = null;
+        this.createButton = document.createElement("button");;
         this.closeButton = null;
         this.overlay = null;
         this.onSubmit = null;
@@ -180,14 +180,14 @@ export default class Modal {
             }}
         })
 
-        const createBtn = document.createElement("button");
-        createBtn.innerText = "Створити";
+
+        this.createButton.innerText = "Створити";
 
         const closeBtn = document.createElement("button");
         closeBtn.innerText = "Відмінити";
         closeBtn.addEventListener('click', ()=> modalWrapper.remove())
 
-        modal.appendChild(createBtn);
+        modal.appendChild(this.createButton);
         modal.appendChild(closeBtn);
 
 
