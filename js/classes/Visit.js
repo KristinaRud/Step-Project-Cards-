@@ -64,9 +64,9 @@ export default class Visit {
 export const data1 = {
     name: "Оксана Земляна",
     doctor: "Стоматолог",
-    goal: "Огляд",
+    purpose: "Огляд",
     description: "Болить зуб",
-    drop: "Терміново",
+    urgency: "Невідкладний",
     age: 25,
     bms: 20,
     pressure: 80 - 120,
@@ -77,9 +77,9 @@ export const data1 = {
 export const data2 = {
     name: "Кристина Рудь",
     doctor: "Кардіолог",
-    goal: "Огляд",
+    purpose: "Огляд",
     description: "Високе серцебиття",
-    drop: "Не терміново",
+    urgency: "Звичайний",
     age: 30,
     bms: 20,
     pressure: 80 - 120,
