@@ -25,7 +25,7 @@ export default class Visit {
 
     render(container) {
         const dateCurrent = new Date().toLocaleDateString();
-
+        this.li.dataset.id = this.id;
         const nameVisit = this.li.querySelector('.visit__title');
         nameVisit.textContent = this.fullName;
 
@@ -34,7 +34,15 @@ export default class Visit {
 
         container.prepend(this.li)
         this.btnClose.addEventListener('click', () => this.delete());
-        this.btnEdit.addEventListener('click', ()=>this.edit());
+
+        this.btnEdit.addEventListener('click', ()=> {
+            const modalForm = new Modal()
+            Api.getCard(this.id).then((data)=>    {
+                root.append(modalForm.render(this.id,data));
+                modalForm.createButton.textContent = "Редагувати";
+            })
+
+        });
 
         this.li.dataset.urgency=this.urgency;
         if (this.date < dateCurrent) {
@@ -66,10 +74,19 @@ export default class Visit {
         })
     }
 
-    edit() {
-        const modalForm = new Modal()
-        root.append(modalForm.render())
-        modalForm.createButton.textContent = "Редагувати";
+edit(visit) {
+
+     //   const liId = this.li.querySelector(`[data-id="${visit.id}"]`);
+     // console.log(this.li)
+        const arrayVisit = [...this.li.querySelectorAll("h3, p")];
+
+           const visitData = Object.entries(visit);
+
+        arrayVisit.forEach((el => {
+            const dataObj = visitData.find(([name]) => el.className === name);
+            el.textContent = dataObj[1];
+        }));
+     console.log(visitData)
 
     }
 

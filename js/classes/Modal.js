@@ -1,15 +1,19 @@
+import Api from "./Api.js";
+import Utils from "./Utils.js";
+import Visit from "./Visit.js";
+
 export default class Modal {
     constructor() {
         this.doctorSelect = null;
         this.fieldsContainer = null;
-        this.createButton = document.createElement("button");;
+        this.createButton = document.createElement("button");
         this.closeButton = null;
         this.overlay = null;
         this.onSubmit = null;
         this.onClose = null;
     }
 
-    render() {
+    render(id = '',{ fullName='', doctor='', purpose='', description='', urgency='', date='', age ='',index ='',pressure='', diseases='', lastDate=''}) {
         const modalWrapper = document.createElement("div");
         modalWrapper.className = "modal-wrapper";
 
@@ -27,21 +31,23 @@ export default class Modal {
         this.doctorSelect.name = "doctor";
         this.doctorSelect.id = "doctor-select";
 
+        const doctorLogyOption = document.createElement("option");
+        doctorLogyOption.value = "Лікар";
+        doctorLogyOption.text = "Лікар";
+
         const cardiologyOption = document.createElement("option");
-        cardiologyOption.value = "cardiologist";
+        cardiologyOption.value = "Кардіолог";
         cardiologyOption.text = "Кардіолог";
 
         const dentistOption = document.createElement("option");
-        dentistOption.value = "dentist";
+        dentistOption.value = "Стоматолог";
         dentistOption.text = "Стоматолог";
 
         const therapistOption = document.createElement("option");
-        therapistOption.value = "therapist";
+        therapistOption.value = "Терапевт";
         therapistOption.text = "Терапевт";
 
-        this.doctorSelect.appendChild(cardiologyOption);
-        this.doctorSelect.appendChild(dentistOption);
-        this.doctorSelect.appendChild(therapistOption);
+        this.doctorSelect.append(doctorLogyOption, cardiologyOption, dentistOption, therapistOption);
 
         doctorSelectWrapper.appendChild(doctorLabel);
         doctorSelectWrapper.appendChild(this.doctorSelect);
@@ -55,19 +61,22 @@ export default class Modal {
         const purposeInput = document.createElement("input");
         purposeInput.type = "text";
         purposeInput.name = "purpose";
+        purposeInput.value = purpose;
 
         const dateVisitLabel = document.createElement("label");
         dateVisitLabel.innerText = "Дата візиту: ";
 
         const dateVisitInput = document.createElement("input");
         dateVisitInput.type = "date";
-        dateVisitInput.name = "date"
+        dateVisitInput.name = "date";
+        dateVisitInput.value = date;
 
         const descriptionLabel = document.createElement("label");
         descriptionLabel.innerText = "Короткий опис: ";
 
         const descriptionInput = document.createElement("textarea");
         descriptionInput.name = "description";
+        descriptionInput.textContent = description;
 
         const urgencyLabel = document.createElement("label");
         urgencyLabel.innerText = "Терміновість: ";
@@ -75,17 +84,18 @@ export default class Modal {
         const urgencySelect = document.createElement("select");
         urgencySelect.name = "urgency";
         urgencySelect.id = "urgency-select";
+        urgencySelect.innerText = urgency;
 
         const normalOption = document.createElement("option");
-        normalOption.value = "normal";
+        normalOption.value = "Звичайний";
         normalOption.text = "Звичайний";
 
         const priorityOption = document.createElement("option");
-        priorityOption.value = "priority";
+        priorityOption.value = "Пріорітетний";
         priorityOption.text = "Пріорітетний";
 
         const emergencyOption = document.createElement("option");
-        emergencyOption.value = "emergency";
+        emergencyOption.value = "Невідкладний";
         emergencyOption.text = "Невідкладний";
 
         urgencySelect.appendChild(normalOption);
@@ -98,6 +108,7 @@ export default class Modal {
         const fullNameInput = document.createElement("input");
         fullNameInput.type = "text";
         fullNameInput.name = "fullName";
+        fullNameInput.value = fullName;
 
         this.fieldsContainer.appendChild(purposeLabel);
         this.fieldsContainer.appendChild(purposeInput);
@@ -117,17 +128,18 @@ export default class Modal {
         specDiv.className = "doctor-specific-wrapper";
 
         doctorSelectWrapper.addEventListener("change", ({target}) => {
-            const doctor = target.value;
+            const doctorTarget = target.value;
 
             if (target.matches('#doctor-select')) {
                 specDiv.innerHTML = ""
-            switch (doctor) {
-                case "dentist": {
+            switch (doctorTarget) {
+                case "Стоматолог": {
                     const lastVisitDateLabel = document.createElement("label");
                     lastVisitDateLabel.innerText = "Дата останнього візиту:";
                     const date = document.createElement("input");
                     date.type = "date";
                     date.name = "lastDate"
+                    date.value = lastDate;
                     specDiv.appendChild(lastVisitDateLabel);
                     specDiv.appendChild(date);
                     doctorSelectWrapper.appendChild(this.fieldsContainer);
@@ -135,40 +147,44 @@ export default class Modal {
 
                     break;
                 }
-                case "therapist": {
+                case "Терапевт": {
                     const ageLabel = document.createElement("label");
                     ageLabel.innerText = "Вік:";
                     const ageInput = document.createElement("input");
                     ageInput.type = "number";
                     ageInput.name = "age";
+                    ageInput.value = age;
                     specDiv.append(ageLabel, ageInput);
                     doctorSelectWrapper.appendChild(this.fieldsContainer);
                     doctorSelectWrapper.appendChild(specDiv);
                     break;
                 }
-                case "cardiologist": {
+                case "Кардіолог": {
                     const pressureLabel = document.createElement("label");
                     pressureLabel.innerText = "Звичайний тиск";
                     const pressureInput = document.createElement("input");
                     pressureInput.type = "number";
                     pressureInput.name = "pressure";
+                    pressureInput.value = pressure;
                     const indexLabel = document.createElement("label");
                     indexLabel.innerText = "Індекс маси тіла:";
                     const indexInput = document.createElement("input");
                     indexInput.type = "number";
                     indexInput.name = "index";
+                    indexInput.value = index;
                     const diseasesLabel = document.createElement("label");
-                    diseasesLabel.innerText = "Перенесені захворювання сердечно-судинної системи: ";
+                    diseasesLabel.innerText = "Перенесені захворювання ССС: ";
 
                     const diseasesInput = document.createElement("textarea");
                     diseasesInput.name = "diseases";
+                    diseasesInput.value = diseases;
 
                     const ageLabel = document.createElement("label");
                     ageLabel.innerText = "Вік:";
                     const ageInput = document.createElement("input");
                     ageInput.type = "number";
                     ageInput.name = "age";
-
+                    ageInput.value = age;
                     specDiv.append(pressureLabel,pressureInput,indexLabel, indexInput, diseasesLabel, diseasesInput, ageLabel, ageInput);
 
 
@@ -180,8 +196,23 @@ export default class Modal {
             }}
         })
 
-
         this.createButton.innerText = "Створити";
+        this.createButton.addEventListener('click', () => {
+            const arrInputField = this.fieldsContainer.querySelectorAll('input,textarea');
+            const arrInputSpec = specDiv.querySelectorAll('input, textarea');
+            const arrInputs = [...arrInputField, ...arrInputSpec];
+
+            const body = {doctor:this.doctorSelect.value, urgency: urgencySelect.value};
+            arrInputs.forEach((element) => {body[element.name] =  element.value  });
+
+            if (this.createButton.innerText === 'Створити') {
+                Api.createCard(body)
+                    .then(data=>{ new Utils().chooseRenderDoctor(data)})
+            } else if (this.createButton.innerText === 'Редагувати') {
+                Api.editCard(id, body).then(data=> new  Visit({}).edit(data));
+            }
+            modalWrapper.remove();
+        });
 
         const closeBtn = document.createElement("button");
         closeBtn.innerText = "Відмінити";
@@ -196,4 +227,6 @@ export default class Modal {
 
     }
 
-}
+
+
+    }
