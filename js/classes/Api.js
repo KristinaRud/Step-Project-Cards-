@@ -100,13 +100,14 @@ export default class Api {
             });
     };
     //Редактирование
-    static editCard= async (cardId) => {
+    static editCard= async (cardId, dataObj) => {
         return await fetch(`${API_URL}/${cardId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify(dataObj),
         })
             .then((response) => {
                 if (!response.ok) {

@@ -1,11 +1,12 @@
 import Api from "./Api.js";
 import Utils from "./Utils.js";
+import Visit from "./Visit.js";
 
 export default class Modal {
     constructor() {
         this.doctorSelect = null;
         this.fieldsContainer = null;
-        this.createButton = document.createElement("button");;
+        this.createButton = document.createElement("button");
         this.closeButton = null;
         this.overlay = null;
         this.onSubmit = null;
@@ -31,19 +32,19 @@ export default class Modal {
         this.doctorSelect.id = "doctor-select";
 
         const doctorLogyOption = document.createElement("option");
-        doctorLogyOption.value = "doctor";
+        doctorLogyOption.value = "Лікар";
         doctorLogyOption.text = "Лікар";
 
         const cardiologyOption = document.createElement("option");
-        cardiologyOption.value = "cardiologist";
+        cardiologyOption.value = "Кардіолог";
         cardiologyOption.text = "Кардіолог";
 
         const dentistOption = document.createElement("option");
-        dentistOption.value = "dentist";
+        dentistOption.value = "Стоматолог";
         dentistOption.text = "Стоматолог";
 
         const therapistOption = document.createElement("option");
-        therapistOption.value = "therapist";
+        therapistOption.value = "Терапевт";
         therapistOption.text = "Терапевт";
 
         this.doctorSelect.append(doctorLogyOption, cardiologyOption, dentistOption, therapistOption);
@@ -86,15 +87,15 @@ export default class Modal {
         urgencySelect.innerText = urgency;
 
         const normalOption = document.createElement("option");
-        normalOption.value = "normal";
+        normalOption.value = "Звичайний";
         normalOption.text = "Звичайний";
 
         const priorityOption = document.createElement("option");
-        priorityOption.value = "priority";
+        priorityOption.value = "Пріорітетний";
         priorityOption.text = "Пріорітетний";
 
         const emergencyOption = document.createElement("option");
-        emergencyOption.value = "emergency";
+        emergencyOption.value = "Невідкладний";
         emergencyOption.text = "Невідкладний";
 
         urgencySelect.appendChild(normalOption);
@@ -132,7 +133,7 @@ export default class Modal {
             if (target.matches('#doctor-select')) {
                 specDiv.innerHTML = ""
             switch (doctorTarget) {
-                case "dentist": {
+                case "Стоматолог": {
                     const lastVisitDateLabel = document.createElement("label");
                     lastVisitDateLabel.innerText = "Дата останнього візиту:";
                     const date = document.createElement("input");
@@ -146,7 +147,7 @@ export default class Modal {
 
                     break;
                 }
-                case "therapist": {
+                case "Терапевт": {
                     const ageLabel = document.createElement("label");
                     ageLabel.innerText = "Вік:";
                     const ageInput = document.createElement("input");
@@ -158,7 +159,7 @@ export default class Modal {
                     doctorSelectWrapper.appendChild(specDiv);
                     break;
                 }
-                case "cardiologist": {
+                case "Кардіолог": {
                     const pressureLabel = document.createElement("label");
                     pressureLabel.innerText = "Звичайний тиск";
                     const pressureInput = document.createElement("input");
@@ -197,25 +198,20 @@ export default class Modal {
 
         this.createButton.innerText = "Створити";
         this.createButton.addEventListener('click', () => {
+            const arrInputField = this.fieldsContainer.querySelectorAll('input,textarea');
+            const arrInputSpec = specDiv.querySelectorAll('input, textarea');
+            const arrInputs = [...arrInputField, ...arrInputSpec];
+
+            const body = {doctor:this.doctorSelect.value, urgency: urgencySelect.value};
+            arrInputs.forEach((element) => {body[element.name] =  element.value  });
+
             if (this.createButton.innerText === 'Створити') {
-
-                const arrInputField = this.fieldsContainer.querySelectorAll('input,textarea');
-                const arrInputSpec = specDiv.querySelectorAll('input, textarea');
-                const arrInputs = [...arrInputField, ...arrInputSpec];
-
-                const arrOptField = modal.querySelectorAll('option');
-                const arrOptSpec = specDiv.querySelectorAll('option');
-                const arrOptions = [...arrOptField, ...arrOptSpec];
-
-                const body = {};
-                arrInputs.forEach((element) => {body[element.name] =  element.value  });
-                arrOptions.forEach((element) => {body[element.parentElement.name] =  element.text  });
-
                 Api.createCard(body)
                     .then(data=>{ new Utils().chooseRenderDoctor(data)})
             } else if (this.createButton.innerText === 'Редагувати') {
-                Api.editCard(id).then(data=> new Utils().chooseRenderDoctor(data))
+                Api.editCard(id, body).then(data=> new  Visit({}).edit(data));
             }
+            modalWrapper.remove();
         });
 
         const closeBtn = document.createElement("button");
