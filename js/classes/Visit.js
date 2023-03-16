@@ -36,6 +36,7 @@ export default class Visit {
         this.btnClose.addEventListener('click', () => this.delete());
         this.btnEdit.addEventListener('click', ()=>this.edit());
 
+        this.li.dataset.urgency=this.urgency;
         if (this.date < dateCurrent) {
             nameVisit.style.color = '#15a415';
             this.li.dataset.status = "done";
@@ -83,7 +84,7 @@ export default class Visit {
 export const data1 = {
     fullName: "Оксана Земляна",
     doctor: "Стоматолог",
-    purpose: "Огляд",
+    purpose: "Видалення",
     description: "Болить зуб",
     urgency: "Невідкладний",
     date: '14.03.2023',
@@ -99,7 +100,7 @@ export const data2 = {
     doctor: "Кардіолог",
     purpose: "Огляд",
     description: "Високе серцебиття",
-    urgency: "Не терміново",
+    urgency: "Невідкладний",
     date: '14.03.2023',
     age: 30,
     index: 20,

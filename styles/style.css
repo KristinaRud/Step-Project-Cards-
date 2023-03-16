@@ -44,11 +44,19 @@ header{
     
 }
 
-.btn-autorize, .btn-create{
+.btn-autorize, .btn-create {
     color: #95A8B5;
+    color: #95A8B5;
+    background-color: #d5d9db2e;
+    padding: 0 5px;
+    border-radius: 5px;
 }
-.btn-autorize:active, .btn-create:active{
-    color:rgb(108, 134, 152);
+.btn-autorize:active,
+.btn-create:active,
+.btn-autorize:hover,
+.btn-create:hover {
+    color: rgb(108, 134, 152);
+    background-color: #b2b9bd2e;
 }
 
 .btn-lang{
