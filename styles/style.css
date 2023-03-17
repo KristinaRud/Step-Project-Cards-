@@ -260,12 +260,16 @@ main{
     top: -4px;
     right: 1%;
 }
-.text__total, .text__cardiologist, .text__therapist, .text__dentist {
-    margin-top: 10px;
+
+.text-wrapper{
     color: rgb(108, 134, 152);
     font-size: 12px;
     line-height: 16px;
     text-align: start;
-
+    margin-top: 10px;
 }
+.text__total:last-child{
+    margin-bottom: 10px;
+}
+
 

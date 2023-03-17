@@ -7,7 +7,7 @@ export default class Modal {
         this.doctorSelect = null;
         this.fieldsContainer = null;
         this.createButton = document.createElement("button");
-        this.closeButton = null;
+        this.body = null;
         this.overlay = null;
         this.onSubmit = null;
         this.onClose = null;
@@ -202,14 +202,17 @@ export default class Modal {
             const arrInputSpec = specDiv.querySelectorAll('input, textarea');
             const arrInputs = [...arrInputField, ...arrInputSpec];
 
-            const body = {doctor:this.doctorSelect.value, urgency: urgencySelect.value};
-            arrInputs.forEach((element) => {body[element.name] =  element.value  });
+            this.body = {doctor:this.doctorSelect.value, urgency: urgencySelect.value};
+            arrInputs.forEach((element) => {this.body[element.name] =  element.value  });
 
             if (this.createButton.innerText === 'Створити') {
-                Api.createCard(body)
-                    .then(data=>{ new Utils().chooseRenderDoctor(data)})
+                Api.createCard(this.body)
+                    .then(data => {
+                        new Utils().chooseRenderDoctor(data)
+                    })
+
             } else if (this.createButton.innerText === 'Редагувати') {
-                Api.editCard(id, body).then(data=> new  Visit({}).edit(data));
+                Api.editCard(id, this.body).then(data=> new  Visit(data).edit(data));
             }
             modalWrapper.remove();
         });

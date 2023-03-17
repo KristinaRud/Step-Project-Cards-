@@ -32,17 +32,23 @@ export default class Visit {
         const doctorVisit = this.li.querySelector('.visit__text-doctor');
         doctorVisit.textContent = this.doctor;
 
-        container.prepend(this.li)
+        this.infoVisit.innerHTML = `<p class="text__total purpose">Мета: ${this.purpose}.</p> 
+                                  <p class="text__total description">Короткий опис: ${this.description}.</p>
+                                  <span><p class="text__total urgency">Терміновість: ${this.urgency}.</p></span>`
+
+
         this.btnClose.addEventListener('click', () => this.delete());
 
-        this.btnEdit.addEventListener('click', ()=> {
-            const modalForm = new Modal()
-            Api.getCard(this.id).then((data)=>    {
-                root.append(modalForm.render(this.id,data));
+
+
+
+        this.btnEdit.addEventListener('click', () => {
+            const modalForm = new Modal();
+           Api.getCard(this.id).then((data) => {
+                root.append(modalForm.render(this.id, data));
                 modalForm.createButton.textContent = "Редагувати";
             })
-
-        });
+              });
 
         if (this.date < dateCurrent) {
             nameVisit.style.color = '#15a415';
@@ -51,41 +57,38 @@ export default class Visit {
             this.iconDone.style.display = "block";
             this.li.style.border = "1px solid rgba(21, 164, 21, 20%)"
         }
-
+        container.prepend(this.li)
         return this.li;
 
     }
 
-    showMoreLess(textExtends = '') {
+    showMoreLess() {
 
         this.btnMoreLess.addEventListener('click', () => {
-            if (this.infoVisit.innerText === '') {
+            if (this.infoVisit.hidden) {
                 this.btnMoreLess.textContent = 'Приховати';
-                this.infoVisit.insertAdjacentHTML('beforeend', `<p class="text__total">
-                                   Мета: ${this.purpose} . <br>
-                                   Короткий опис: ${this.description}.<br>
-                                   Терміновість: ${this.urgency}.<br>
-                                   </p>  ${textExtends}`);
+                this.infoVisit.hidden = false;
+
             } else {
                 this.btnMoreLess.textContent = 'Показати більше';
-                this.infoVisit.textContent = ''
+                this.infoVisit.hidden = true;
             }
         })
     }
 
-edit(visit) {
-
-     //   const liId = this.li.querySelector(`[data-id="${visit.id}"]`);
-     // console.log(this.li)
-        const arrayVisit = [...this.li.querySelectorAll("h3, p")];
-
-           const visitData = Object.entries(visit);
-
-        arrayVisit.forEach((el => {
-            const dataObj = visitData.find(([name]) => el.className === name);
-            el.textContent = dataObj[1];
-        }));
-     console.log(visitData)
+   edit({doctor}) {
+        const textName = this.li.querySelector("p");
+        textName.textContent = doctor;
+        // const visitData = Object.entries(visit);
+        // const name = visitData[[0]].split();
+        // console.log(name)
+        // arrayVisit.forEach((el => {
+        //
+        //     const dataObj = visitData.find(name => el.className === name);
+        //     console.log(dataObj)
+        //     el.textContent = dataObj[1];
+        // }));
+        // console.log(visitData)
 
     }
 
@@ -96,48 +99,6 @@ edit(visit) {
             }
         })
     }
-}
-export const data1 = {
-    fullName: "Оксана Земляна",
-    doctor: "Стоматолог",
-    purpose: "Огляд",
-    description: "Болить зуб",
-    urgency: "Терміново",
-    date: '15.03.2023',
-    age: 25,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 1,
-}
-export const data2 = {
-    fullName: "Кристина Рудь",
-    doctor: "Кардіолог",
-    purpose: "Огляд",
-    description: "Високе серцебиття",
-    urgency: "Не терміново",
-    date: '14.03.2023',
-    age: 30,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 2,
-}
-export const data3 = {
-    fullName: "Иван Иван",
-    doctor: "Терапевт",
-    purpose: "Огляд",
-    description: "Високе серцебиття",
-    urgency: "Не терміново",
-    date: '16.03.2023',
-    age: 30,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 2,
 }
 
 
