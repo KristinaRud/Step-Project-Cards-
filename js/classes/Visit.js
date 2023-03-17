@@ -76,8 +76,6 @@ export default class Visit {
 
 edit(visit) {
 
-     //   const liId = this.li.querySelector(`[data-id="${visit.id}"]`);
-     // console.log(this.li)
         const arrayVisit = [...this.li.querySelectorAll("h3, p")];
 
            const visitData = Object.entries(visit);
@@ -98,47 +96,4 @@ edit(visit) {
         })
     }
 }
-export const data1 = {
-    fullName: "Оксана Земляна",
-    doctor: "Стоматолог",
-    purpose: "Видалення",
-    description: "Болить зуб",
-    urgency: "Невідкладний",
-    date: '14.03.2023',
-    age: 25,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 1,
-}
-export const data2 = {
-    fullName: "Кристина Рудь",
-    doctor: "Кардіолог",
-    purpose: "Огляд",
-    description: "Високе серцебиття",
-    urgency: "Невідкладний",
-    date: '14.03.2023',
-    age: 30,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 2,
-}
-export const data3 = {
-    fullName: "Иван Иван",
-    doctor: "Терапевт",
-    purpose: "Огляд",
-    description: "Високе серцебиття",
-    urgency: "Не терміново",
-    date: '16.03.2023',
-    age: 30,
-    index: 20,
-    pressure: 80 - 120,
-    diseases: 'немає',
-    lastDate: "11/12/2022",
-    // id: 2,
-}
-
 
