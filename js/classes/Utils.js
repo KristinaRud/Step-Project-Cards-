@@ -37,4 +37,46 @@ export default class Utils {
                 break;
         }
     }
+
+    static filterCards=(event, formFilter)=>{
+       event.preventDefault();
+       const search=formFilter.search.value.toLowerCase();
+       const status=formFilter.status.value.toLowerCase();
+       const terminate = formFilter.terminate.value.toLowerCase();
+       const list = Array.from(document.querySelectorAll('.visit__list li'));
+       console.log(list);
+    
+       let resFilterSearch;
+       let resFilterStatus;
+       let resFilterUrgency;
+       //search by word
+       if(search !== ""){
+          resFilterSearch = list.filter(item=>{
+             let str = (item.innerHTML).toLowerCase();
+             if(str.includes(search)){
+                item.classList.remove("hide");
+             }else{item.classList.add("hide");}
+          })
+       }else resFilterSearch=list;
+       
+       if(status !=="всі" && resFilterSearch!==undefined){
+          resFilterStatus=resFilterSearch.filter(item=>{
+             let str = item.dataset.status;
+             if(str.toLowerCase() === status){
+                item.classList.remove("hide");
+             }else{item.classList.add("hide");}
+          })
+       }else resFilterStatus=resFilterSearch;
+    
+       if(terminate !=="всі" && resFilterStatus!==undefined){
+          resFilterUrgency=resFilterStatus.filter(item=>{
+             let str = item.dataset.urgency;
+             if(str.toLowerCase() === terminate){
+                item.classList.remove("hide");
+             }else{item.classList.add("hide");}
+          })
+       }else resFilterUrgency=resFilterStatus;
+       
+       console.log(...resFilterUrgency);
+    }
 }

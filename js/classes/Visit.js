@@ -50,6 +50,7 @@ export default class Visit {
             })
               });
 
+        this.li.dataset.urgency=this.urgency;
         if (this.date < dateCurrent) {
             nameVisit.style.color = '#15a415';
             this.li.dataset.status = "done";
@@ -89,7 +90,6 @@ export default class Visit {
         //     el.textContent = dataObj[1];
         // }));
         // console.log(visitData)
-
     }
 
     delete() {
