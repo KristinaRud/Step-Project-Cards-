@@ -79,4 +79,12 @@ export default class Utils {
        
        console.log(...resFilterUrgency);
     }
+
+    static reverseDate(date) {
+        date = date.replaceAll(".", "-");
+        const dateYear = date.substring(6);
+        const dateMonth = date.substring(3,5);
+        const dateDay = date.substring(0,2);
+        return `${dateYear}-${dateMonth}-${dateDay}`;
+    }
 }

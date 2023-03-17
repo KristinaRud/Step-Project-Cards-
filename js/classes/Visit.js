@@ -3,6 +3,19 @@ import Modal from "./Modal.js";
 import {root} from "../constants.js";
 
 export default class Visit {
+    age;
+    date;
+    description;
+    diseases;
+    doctor;
+    fullName;
+    index;
+    lastDate;
+    pressure;
+    purpose;
+    urgency;
+
+
     constructor({fullName, doctor, purpose, description, urgency, id, date}) {
         this.fullName = fullName;
         this.doctor = doctor;
@@ -43,12 +56,26 @@ export default class Visit {
 
 
         this.btnEdit.addEventListener('click', () => {
+            console.log("Click Edit");
             const modalForm = new Modal();
-           Api.getCard(this.id).then((data) => {
-                root.append(modalForm.render(this.id, data));
-                modalForm.createButton.textContent = "Редагувати";
-            })
-              });
+            const data = {
+                fullName: this.fullName,
+                doctor: this.doctor,
+                purpose: this.purpose,
+                description: this.description,
+                urgency: this.urgency,
+                date: this.date,
+                age: this.age,
+                index: this.index,
+                pressure: this.pressure,
+                diseases: this.diseases,
+                lastDate: this.lastDate }
+
+            console.log(this.date);
+            const editForm = modalForm.render(this.id,data);
+            root.append(editForm);
+
+        });
 
         this.li.dataset.urgency=this.urgency;
         if (this.date < dateCurrent) {
