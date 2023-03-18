@@ -12,12 +12,12 @@ export default class VisitCardiologist extends Visit{
     render(container) {
         super.render(container);
         this.imgVisit.src = "https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Fhome.jpg%3Fv%3Dt&quot"
-        this.infoVisit.innerHTML += `<p> Звичайний тиск: ${this.pressure}.
-                                     <p> Індекс маси тіла: ${this.index}. </p>
-                                      <p> Перенесені захворювання CCC: ${this.diseases}. </p>
-                                       <p> Вік: ${this.age}. </p>`
+        this.infoVisit.innerHTML += `<p class="pressure"> Звичайний тиск: ${this.pressure}.
+                                     <p class="index"> Індекс маси тіла: ${this.index}. </p>
+                                      <p class="diseases"> Перенесені захворювання CCC: ${this.diseases}. </p>
+                                       <p class="age-Cardiologist"> Вік: ${this.age}. </p>`
         super.showMoreLess()
-        super.edit({})
+
 
     }
 }

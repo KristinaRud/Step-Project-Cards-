@@ -13,7 +13,7 @@ export default class Modal {
         this.onClose = null;
     }
 
-    render(id = '' ,{ fullName = '', doctor = '', purpose = '', description = '', urgency = '', date: visitDate = '', age = '',index = '',pressure = '', diseases = '', lastDate = ''}) {
+    render(id = '' ,{ fullName = '', doctor = '', purpose = '', description = '', urgency = '', date: visitDate = '', age = '',index = '',pressure = '', diseases = '', lastDate = ''}, formHandler) {
         const modalWrapper = document.createElement("div");
         modalWrapper.className = "modal-wrapper";
 
@@ -305,8 +305,9 @@ export default class Modal {
                             new Utils().chooseRenderDoctor(data)
                         })
 
-                } else if (this.createButton.innerText === 'Редагувати') {
-                    Api.editCard(id, this.body).then(data => new Visit(data).edit(data));
+                }
+                else if (this.createButton.innerText === 'Редагувати') {
+                    Api.editCard(id, this.body).then(data => formHandler(data));
                 }
                 modalWrapper.remove();
             });

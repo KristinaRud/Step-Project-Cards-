@@ -202,6 +202,9 @@ main{
     margin-bottom: 50px;
 }
 /*card Visit*/
+span{
+    display: inline-block;
+}
 .visit__list {
     margin: 20px;
     display: flex;

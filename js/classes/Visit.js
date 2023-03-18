@@ -45,18 +45,15 @@ export default class Visit {
         const doctorVisit = this.li.querySelector('.visit__text-doctor');
         doctorVisit.textContent = this.doctor;
 
-        this.infoVisit.innerHTML = `<p class="text__total purpose">Мета: ${this.purpose}.</p> 
+        this.infoVisit.innerHTML = `<p class="text__total purpose">Мета: ${this.purpose}.</p>
                                   <p class="text__total description">Короткий опис: ${this.description}.</p>
-                                  <span><p class="text__total urgency">Терміновість: ${this.urgency}.</p></span>`
+                                 <p class="text__total urgency">Терміновість: ${this.urgency}.</p>`
 
 
         this.btnClose.addEventListener('click', () => this.delete());
 
 
-
-
         this.btnEdit.addEventListener('click', () => {
-            console.log("Click Edit");
             const modalForm = new Modal();
             const data = {
                 fullName: this.fullName,
@@ -69,15 +66,21 @@ export default class Visit {
                 index: this.index,
                 pressure: this.pressure,
                 diseases: this.diseases,
-                lastDate: this.lastDate }
+                lastDate: this.lastDate
+            }
 
-            console.log(this.date);
-            const editForm = modalForm.render(this.id,data);
+            const editForm = modalForm.render(this.id, data, (data) => {
+                this.edit(data);
+            });
             root.append(editForm);
 
         });
 
+
+
+
         this.li.dataset.urgency=this.urgency;
+
         if (this.date < dateCurrent) {
             nameVisit.style.color = '#15a415';
             this.li.dataset.status = "done";
@@ -104,19 +107,22 @@ export default class Visit {
         })
     }
 
-   edit({doctor}) {
-        const textName = this.li.querySelector("p");
-        textName.textContent = doctor;
-        // const visitData = Object.entries(visit);
-        // const name = visitData[[0]].split();
-        // console.log(name)
-        // arrayVisit.forEach((el => {
+   edit(visit) {
+        // const name = this.li.querySelector('.fullName');
+        // name.textContent = fullName;
         //
-        //     const dataObj = visitData.find(name => el.className === name);
-        //     console.log(dataObj)
-        //     el.textContent = dataObj[1];
-        // }));
-        // console.log(visitData)
+        // const ageTherapist = this.li.querySelector('.age-therapist');
+        // ageTherapist.textContent = age;
+       const arrayVisits = this.li.querySelectorAll('h3,p');
+
+      for (let key in visit) {
+          arrayVisits.forEach(el => {
+              if (el.className.includes(key)) {
+                  console.log(visit.key)
+                 el.innerText = visit[key]
+              }
+               })
+      }
     }
 
     delete() {
