@@ -57,7 +57,7 @@ export default class Utils {
                 item.classList.remove("hide");
              }else{item.classList.add("hide");}
           })
-       }else resFilterSearch=list;
+       }else resFilterSearch=[...list];
        
        if(status !=="всі" && resFilterSearch!==undefined){
           resFilterStatus=resFilterSearch.filter(item=>{
@@ -66,7 +66,7 @@ export default class Utils {
                 item.classList.remove("hide");
              }else{item.classList.add("hide");}
           })
-       }else resFilterStatus=resFilterSearch;
+       }else resFilterStatus=[...resFilterSearch];
     
        if(terminate !=="всі" && resFilterStatus!==undefined){
           resFilterUrgency=resFilterStatus.filter(item=>{
@@ -75,7 +75,7 @@ export default class Utils {
                 item.classList.remove("hide");
              }else{item.classList.add("hide");}
           })
-       }else resFilterUrgency=resFilterStatus;
+       }else resFilterUrgency=[...resFilterStatus];
        
        console.log(...resFilterUrgency);
     }

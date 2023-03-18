@@ -69,6 +69,9 @@ header{
 .btn-lang:active{
     opacity: 0.6;
 }
+.form-filter{
+    display: flex;
+}
 /*Login*/
 .modal-overlay {
     position: fixed;
