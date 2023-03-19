@@ -45,7 +45,7 @@ export default class Visit {
 
     this.infoVisit.innerHTML = `<p class="text__total purpose">Мета: ${this.purpose}.</p>
                                   <p class="text__total description">Короткий опис: ${this.description}.</p>
-                                 <p class="text__total urgency">Терміновість: ${this.urgency}.</p>`;
+                                 <span><p class="text__total urgency">Терміновість: ${this.urgency}.</p> </span>`;
 
     this.btnClose.addEventListener("click", () => this.delete());
 
