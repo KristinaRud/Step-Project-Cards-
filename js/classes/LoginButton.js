@@ -34,8 +34,6 @@ export default class LoginButton {
     static #openCreateVisitWindow() {
         if (!document.querySelector(".visit__wrapper")) {
             const createVisitModule = new Modal().render("",{});
-
-            console.log(createVisitModule);
             root.appendChild(createVisitModule);
         }
 

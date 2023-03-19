@@ -47,11 +47,10 @@ export default class Utils {
 
        list.forEach(el=>el.classList.remove("hide"));
     
-       let resFilterSearch=[...list];
+       let resFilter=[...list];
 
-       //search by word
        if(search !== ""){
-          resFilterSearch = resFilterSearch.filter(item=>{
+          resFilter = resFilter.filter(item=>{
              let str = (item.innerHTML).toLowerCase();
              if(str.includes(search)){
                 return item;
@@ -59,8 +58,8 @@ export default class Utils {
           })
        }
        
-       if(status !=="всі" && resFilterSearch!==undefined && resFilterSearch.length!==0){
-        resFilterSearch=resFilterSearch.filter(item=>{
+       if(status !=="всі" && resFilter!==undefined && resFilter.length!==0){
+        resFilter=resFilter.filter(item=>{
              let str = item.dataset.status;
              if(str.toLowerCase() === status){
                 return item;
@@ -68,8 +67,8 @@ export default class Utils {
           })
        }
     
-       if(terminate !=="всі" && resFilterSearch!==undefined && resFilterSearch.length!==0){
-        resFilterSearch=resFilterSearch.filter(item=>{
+       if(terminate !=="всі" && resFilter!==undefined && resFilter.length!==0){
+        resFilter=resFilter.filter(item=>{
              let str = item.dataset.urgency;
              if(str.toLowerCase() === terminate){
                 return item;
@@ -78,7 +77,7 @@ export default class Utils {
        }
 
        list.forEach(li=>{
-        resFilterSearch.forEach(res=>{
+        resFilter.forEach(res=>{
             if(li.dataset.id===res.dataset.id){
                 li.classList.remove('hide');
             }else{ li.classList.add('hide');}
