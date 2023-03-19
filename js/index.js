@@ -5,7 +5,7 @@ import Utils from "./classes/Utils.js";
 //logIn('kristina.rud5@gmail.com', '123456');
 
 const formFilter = document.querySelector(".form-filter");
-
+const crearFilter=document.querySelector(".filter-clear-btn");
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("authToken")) {
         setToken(localStorage.getItem("authToken"));
@@ -20,4 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 formFilter.addEventListener('submit', (e) => {
     Utils.filterCards(e, formFilter);
+});
+
+crearFilter.addEventListener('click', (e) => {
+    Utils.crearFilter(e, formFilter);
 })
+

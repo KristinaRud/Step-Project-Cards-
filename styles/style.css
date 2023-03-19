@@ -1,36 +1,37 @@
-body{
-    background-color: rgba(243,245,245,1.00);
+body {
+    background-color: rgba(243, 245, 245, 1.00);
     font-family: 'Roboto Serif', sans-serif;
     min-width: 320px;
 
 }
-header{
+
+header {
     background-color: white;
     box-shadow: rgba(28, 72, 151, 0.25) 0px 0px 2px;
 }
 
-#header{
+#header {
     padding: 10px 10px;
 }
 
-.menu{
+.menu {
     display: flex;
     justify-content: space-between;
 }
 
-.logo-href{
+.logo-href {
     display: flex;
     align-items: center;
 }
 
-.logo-title{
+.logo-title {
     color: #094774;
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 700;
 }
 
-.btn{
+.btn {
     border: none;
     background: none;
     cursor: pointer;
@@ -41,16 +42,18 @@ header{
     font-size: 17px;
     font-weight: 600;
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    
+
 }
 
-.btn-autorize, .btn-create {
+.btn-autorize,
+.btn-create {
     color: #95A8B5;
     color: #95A8B5;
     background-color: #d5d9db2e;
     padding: 0 5px;
     border-radius: 5px;
 }
+
 .btn-autorize:active,
 .btn-create:active,
 .btn-autorize:hover,
@@ -59,19 +62,22 @@ header{
     background-color: #b2b9bd2e;
 }
 
-.btn-lang{
-    color:  rgb(67, 118, 173);
-}
-.btn-lang span{
-    color:  #094774;
+.btn-lang {
+    color: rgb(67, 118, 173);
 }
 
-.btn-lang:active{
+.btn-lang span {
+    color: #094774;
+}
+
+.btn-lang:active {
     opacity: 0.6;
 }
-.form-filter{
+
+.form-filter {
     display: flex;
 }
+
 /*Login*/
 .modal-overlay {
     position: fixed;
@@ -85,12 +91,14 @@ header{
     align-items: center;
     justify-content: center;
 }
-.modal{
+
+.modal {
     background: white;
     padding: 40px;
     width: 500px;
 }
-#login-form{
+
+#login-form {
     display: flex;
     flex-direction: column;
 }
@@ -98,22 +106,23 @@ header{
 .input-wrapper {
     position: relative;
     width: 100%;
-         
-  }
 
-  .input-wrapper input {
+}
+
+.input-wrapper input {
     width: inherit;
     padding: 10px;
     margin-bottom: 24px;
-  }
+}
 
-  .input-wrapper i {
+.input-wrapper i {
     position: absolute;
     right: 5%;
-    top: 20%;   
+    top: 20%;
     color: grey;
-  }
-.close{
+}
+
+.close {
     border: none;
     background: none;
     width: 25px;
@@ -124,20 +133,20 @@ header{
     transform: translateX(-37%);
 }
 
-#sign-in{
+#sign-in {
     background: dodgerblue;
     border: none;
     border-radius: 10px;
     height: 30px;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
 /*filter-section*/
 
-.filter-section{
+.filter-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -148,24 +157,28 @@ header{
     line-height: 16px;
     box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
 }
+
 .wrapper-input {
     position: relative;
 }
-.filter__input, .filter select{
+
+.filter__input,
+.filter select {
     box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
-    background-color: rgba(0,0,0,0.00);
+    background-color: rgba(0, 0, 0, 0.00);
     border: 0 solid white;
-    color: rgba(13,56,87,1.00);
+    color: rgba(13, 56, 87, 1.00);
     padding: 5px 20px;
-    outline:none;
+    outline: none;
 }
 
-.filter__input::placeholder{
+.filter__input::placeholder {
     font-size: 12px;
-    color:#6B7D8E;
+    color: #6B7D8E;
 
 }
-.filter svg{
+
+.filter svg {
     position: absolute;
     top: 4px;
     right: 6px;
@@ -174,40 +187,46 @@ header{
     height: 20px;
 }
 
-.filter-btn {
+.filter-btn,
+.filter-clear-btn {
     box-shadow: 0px 1px 3px rgb(60 60 60 / 15%);
-    background-color: rgba(0,0,0,0.00);
+    background-color: rgba(0, 0, 0, 0.00);
     border: 0 solid white;
-    color: rgba(13,56,87,1.00);
+    color: rgba(13, 56, 87, 1.00);
     padding: 5px 20px;
     cursor: pointer;
 }
-.filter-btn:hover {
-    background-color: rgba(243,245,245,1.00);
+
+.filter-btn:hover,
+.filter-clear-btn:hover {
+    background-color: rgba(243, 245, 245, 1.00);
 }
+
 /*main*/
 
-main{
+main {
     padding: 20px 0;
     text-align: center;
 }
 
-#main{
+#main {
     background-color: #F7F8F8;
-    box-shadow:0px 1px 4px rgb(60 60 60 / 15%);
+    box-shadow: 0px 1px 4px rgb(60 60 60 / 15%);
     border-radius: 10px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
-.placeholder__text{
-    color: rgba(108,134,152,1.00);
+.placeholder__text {
+    color: rgba(108, 134, 152, 1.00);
     margin-bottom: 50px;
 }
+
 /*card Visit*/
-span{
+span {
     display: inline-block;
 }
+
 .visit__list {
     margin: 20px;
     display: flex;
@@ -222,52 +241,59 @@ span{
     padding: 8px;
     position: relative;
 }
-.visit__item{
+
+.visit__item {
     display: flex;
     gap: 10px;
     align-items: flex-start;
     text-align: center;
 
 }
-.visit__title{
-    color: rgba(13,56,87,1.00);
+
+.visit__title {
+    color: rgba(13, 56, 87, 1.00);
     font-weight: bold;
     font-size: 20px;
     line-height: 36px;
 }
 
-.visit__text-doctor{
-    color: rgba(108,134,152,1.00);
+.visit__text-doctor {
+    color: rgba(108, 134, 152, 1.00);
     font-size: 16px;
     line-height: 28px;
 }
 
-.visit__img{
+.visit__img {
     background-color: hsl(0, 0%, 90%);
 }
 
-.active{
+.active {
     background-color: rgba(8, 80, 134, 0.2);
 }
-.visit-btn{
+
+.visit-btn {
     background-color: hsl(0, 0%, 90%);
     padding: 10px;
-    color: rgba(13,56,87,1.00);
+    color: rgba(13, 56, 87, 1.00);
     border: none;
     margin-top: 30px;
     cursor: pointer;
 }
-.wrapper-icon{
+
+.wrapper-icon {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#btn-close, #btn-edit{
-    fill: rgba(108,134,152,1.00);
-   background-color:  hsl(0, 0%, 90%);
+
+#btn-close,
+#btn-edit {
+    fill: rgba(108, 134, 152, 1.00);
+    background-color: hsl(0, 0%, 90%);
     cursor: pointer;
 }
-.icon-done{
+
+.icon-done {
     display: none;
     fill: rgba(21, 164, 21, 0.98);
     position: absolute;
@@ -275,15 +301,14 @@ span{
     right: 1%;
 }
 
-.text-wrapper{
+.text-wrapper {
     color: rgb(108, 134, 152);
     font-size: 12px;
     line-height: 16px;
     text-align: start;
     margin-top: 10px;
 }
-.text__total:last-child{
+
+.text__total:last-child {
     margin-bottom: 10px;
 }
-
-
