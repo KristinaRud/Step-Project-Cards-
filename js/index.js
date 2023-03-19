@@ -23,6 +23,6 @@ formFilter.addEventListener('submit', (e) => {
 });
 
 crearFilter.addEventListener('click', (e) => {
-    Utils.crearFilter(e, formFilter);
+    Utils.clearFilter(e, formFilter);
 })
 

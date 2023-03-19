@@ -46,6 +46,8 @@ export default class Utils {
        const list = Array.from(document.querySelectorAll('.visit__list li'));
 
        list.forEach(el=>el.classList.remove("hide"));
+
+       console.log(...list);
     
        let resFilter=[...list];
 
@@ -76,17 +78,14 @@ export default class Utils {
           })
        }
 
-       list.forEach(li=>{
-        resFilter.forEach(res=>{
-            if(li.dataset.id===res.dataset.id){
-                li.classList.remove('hide');
-            }else{ li.classList.add('hide');}
-        })
-       })
+       console.log(...resFilter);
+
+       list.forEach(el => el.classList.add('hide'));
+       resFilter.forEach(el =>el.classList.remove('hide'));
     }
 
 
-    static crearFilter = (event, formFilter)=>{
+    static clearFilter = (event, formFilter)=>{
         event.preventDefault();
         formFilter.search.value="";
         formFilter.status.value="Всі";
