@@ -101,7 +101,6 @@ export default class Visit {
     for (let key in visit) {
       arrayVisits.forEach((el) => {
         if (el.className.includes(key)) {
-          console.log(visit.key);
           el.innerText = this.initialize(key, visit[key]);
           
         }
