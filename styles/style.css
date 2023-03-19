@@ -76,6 +76,9 @@ header {
 
 .form-filter {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 /*Login*/
