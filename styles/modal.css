@@ -125,6 +125,7 @@ opacity: 0.5;
 }
 .modal button{
     width: 11.5vw;
+    min-width: min-content;
     margin: 1vh 1vw;
 }
 .doctor-specific-wrapper{

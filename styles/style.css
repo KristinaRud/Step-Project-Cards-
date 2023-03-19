@@ -13,6 +13,10 @@ header {
 #header {
     padding: 10px 10px;
 }
+.container{
+    padding: 0 10px;
+margin: 0 auto;
+}
 
 .menu {
     display: flex;
@@ -47,7 +51,6 @@ header {
 
 .btn-autorize,
 .btn-create {
-    color: #95A8B5;
     color: #95A8B5;
     background-color: #d5d9db2e;
     padding: 0 5px;

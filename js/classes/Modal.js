@@ -7,9 +7,6 @@ export default class Modal {
         this.fieldsContainer = null;
         this.createButton = document.createElement("button");
         this.body = null;
-        this.overlay = null;
-        this.onSubmit = null;
-        this.onClose = null;
     }
 
     render(id = '' ,{ fullName = '', doctor = '', purpose = '', description = '', urgency = '', date: visitDate = '', age = '',index = '',pressure = '', diseases = '', lastDate = ''}, formHandler) {

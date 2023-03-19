@@ -78,8 +78,6 @@ export default class Utils {
           })
        }
 
-       console.log(...resFilter);
-
        list.forEach(el => el.classList.add('hide'));
        resFilter.forEach(el =>el.classList.remove('hide'));
     }
