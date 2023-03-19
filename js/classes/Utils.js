@@ -86,7 +86,7 @@ export default class Utils {
     }
 
 
-    static crearFilter = (event, formFilter)=>{
+    static clearFilter = (event, formFilter)=>{
         event.preventDefault();
         formFilter.search.value="";
         formFilter.status.value="Всі";
@@ -95,12 +95,4 @@ export default class Utils {
         list.forEach(el=>el.classList.remove("hide"));
      
      }
-
-    static reverseDate(date) {
-        date = date.replaceAll(".", "-");
-        const dateYear = date.substring(6);
-        const dateMonth = date.substring(3,5);
-        const dateDay = date.substring(0,2);
-        return `${dateYear}-${dateMonth}-${dateDay}`;
-    }
 }
