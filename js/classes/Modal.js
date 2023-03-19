@@ -1,6 +1,5 @@
 import Api from "./Api.js";
 import Utils from "./Utils.js";
-import Visit from "./Visit.js";
 
 export default class Modal {
     constructor() {

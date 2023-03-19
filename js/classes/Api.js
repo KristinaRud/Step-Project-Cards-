@@ -22,9 +22,6 @@ export default class Api {
                 }
                 return response.text();
             });
-        // try {
-            
-        // } catch (err) { console.warn(err) }
     };
 
 
