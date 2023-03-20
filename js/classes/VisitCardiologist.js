@@ -15,9 +15,8 @@ export default class VisitCardiologist extends Visit{
         this.infoVisit.innerHTML += `<p class="pressure"> Звичайний тиск: ${this.pressure}.
                                      <p class="index"> Індекс маси тіла: ${this.index}. </p>
                                       <p class="diseases"> Перенесені захворювання CCC: ${this.diseases}. </p>
-                                       <p class="age-Cardiologist"> Вік: ${this.age}. </p>`
+                                       <p class="age"> Вік: ${this.age}. </p>`
         super.showMoreLess()
-
-
+        super.changeStatusDone(this.date);
     }
 }

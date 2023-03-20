@@ -245,6 +245,9 @@ span {
     padding: 8px;
     position: relative;
 }
+.border{
+    border:1px solid rgba(21, 164, 21, 20%);
+}
 
 .visit__item {
     display: flex;
@@ -259,6 +262,9 @@ span {
     font-weight: bold;
     font-size: 20px;
     line-height: 36px;
+}
+.color {
+    color: #15a415;
 }
 
 .visit__text-doctor {
