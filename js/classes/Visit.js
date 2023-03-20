@@ -74,7 +74,6 @@ export default class Visit {
 		});
 
 		this.li.dataset.urgency = this.urgency;
-		// container.prepend(this.li);
 		return this.li;
 	}
 
