@@ -74,6 +74,9 @@ export default class Visit {
 		});
 
 		this.li.dataset.urgency = this.urgency;
+		
+		this.changeStatusDone(this.date);
+		this.showMoreLess()
 		return this.li;
 	}
 

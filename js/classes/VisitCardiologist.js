@@ -16,8 +16,6 @@ export default class VisitCardiologist extends Visit{
                                      <p class="index"> Індекс маси тіла: ${this.index}. </p>
                                       <p class="diseases"> Перенесені захворювання CCC: ${this.diseases}. </p>
                                        <p class="age"> Вік: ${this.age}. </p>`
-        super.showMoreLess()
-        super.changeStatusDone(this.date);
         return this.li;
     }
 }
