@@ -9,8 +9,8 @@ export default class VisitCardiologist extends Visit{
         this.age = age;
     }
 
-    render(container) {
-        super.render(container);
+    render() {
+        super.render();
         this.imgVisit.src = "https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Fhome.jpg%3Fv%3Dt&quot"
         this.infoVisit.innerHTML += `<p class="pressure"> Звичайний тиск: ${this.pressure}.
                                      <p class="index"> Індекс маси тіла: ${this.index}. </p>
@@ -18,5 +18,6 @@ export default class VisitCardiologist extends Visit{
                                        <p class="age"> Вік: ${this.age}. </p>`
         super.showMoreLess()
         super.changeStatusDone(this.date);
+        return this.li;
     }
 }

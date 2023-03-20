@@ -1,5 +1,6 @@
 import Api from "./Api.js";
 import Utils from "./Utils.js";
+import {listContainer} from "../constants.js";
 
 
 export default class Modal {
@@ -299,7 +300,8 @@ export default class Modal {
                 if (this.createButton.innerText === 'Створити') {
                     Api.createCard(this.body)
                         .then(data => {
-                            new Utils().chooseRenderDoctor(data)
+                          const visitCard =  new Utils().chooseRenderDoctor(data);
+                           listContainer.prepend(visitCard);
                         })
 
                 }

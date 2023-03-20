@@ -2,6 +2,7 @@ import Api from "./Api.js";
 import Modal from "./Modal.js";
 import {root} from "../constants.js";
 import Utils from "./Utils.js";
+import {listContainer} from "../constants.js";
 
 export default class Visit {
 	age;
@@ -37,7 +38,7 @@ export default class Visit {
 		this.nameVisit = this.li.querySelector(".visit__title");
 	}
 
-	render(container) {
+	render() {
 		this.li.dataset.id = this.id;
 		this.nameVisit.textContent = this.fullName;
 
@@ -73,7 +74,7 @@ export default class Visit {
 		});
 
 		this.li.dataset.urgency = this.urgency;
-		container.prepend(this.li);
+		// container.prepend(this.li);
 		return this.li;
 	}
 
@@ -106,8 +107,9 @@ export default class Visit {
 	}
 
 	edit(visit) {
+		const li = new Utils().chooseRenderDoctor(visit)
+		this.li.before(li)
 		this.li.remove();
-		new Utils().chooseRenderDoctor(visit)
 	}
 
 	delete() {
