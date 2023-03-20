@@ -2,8 +2,6 @@ import Api from "./Api.js";
 import Modal from "./Modal.js";
 import {root} from "../constants.js";
 import Utils from "./Utils.js";
-import {listContainer} from "../constants.js";
-
 
 export default class Visit {
 	age;
@@ -109,65 +107,8 @@ export default class Visit {
 
 	edit(visit) {
 		this.li.remove();
-		new Utils().chooseRenderDoctor(visit,  listContainer)
-
-// 		const arr = listContainer.querySelectorAll('li');
-// arr.forEach(el => console.log(el.dataset.id))
-// 		console.log(this.li)
-// 		arr.forEach(({dataset.id}) => {})
-		// const arrayVisits = this.li.querySelectorAll("h3,p");
-		// for (let key in visit) {
-		// 	arrayVisits.forEach((el) => {
-		// 		if (el.className.includes(key)) {
-		// 			el.innerText = this.#initialize(key, visit[key]);
-		// 		}
-		// 	});
-		//
-		// }
-		// this.changeStatusDone(visit.date)
+		new Utils().chooseRenderDoctor(visit)
 	}
-	//
-	// #initialize(key, val) {
-	// 	if (key === "fullName") {
-	// 		this.fullName = val;
-	// 		return this.fullName;
-	// 	} else if (key === "doctor") {
-	//
-	// 		if (val === 'Кардіолог') {
-	// 			this.imgVisit.src = "https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Fhome.jpg%3Fv%3Dt&quot"
-	// 		} else if (val === 'Стоматолог') {
-	// 			this.imgVisit.setAttribute('src', 'https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Flandings%2F%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F%2FStomatologia.gif%3Fv%3D')
-	// 		} else if (val === 'Терапевт') {
-	// 			this.imgVisit.src = "https://res.cloudinary.com/djrrr9cpl/image/fetch/pg_1,e_outline:1,co_white/f_png,w_128,h_128/https%3A%2F%2Fportal-doctor.eleks.com%2Fapi%2Fgetfile%2Fdobrobutprodcms%2Flandings%2F%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D0%B8%D1%8F%2F%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D1%96%D1%8F_%D0%B7%D0%B0%D0%B3%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9%20%D0%BB%D0%B5%D0%BD%D0%B4%D1%96%D0%BD%D0%B3%2F%2Fterapia.gif%3Fv%3Dt"
-	// 		}
-	// 		this.doctor = val;
-	// 		return this.doctor;
-	// 	} else if (key === "purpose") {
-	// 		this.purpose = val;
-	// 		return `Мета: ${this.purpose}`;
-	// 	} else if (key === "description") {
-	// 		this.description = val;
-	// 		return `Короткий опис: ${this.description}`
-	// 	} else if (key === "urgency") {
-	// 		this.urgency = val;
-	// 		return `Терміновість: ${this.urgency}`;
-	// 	} else if (key === "age") {
-	// 		this.age = val;
-	// 		return `Вік: ${this.age}`;
-	// 	} else if (key === "index") {
-	// 		this.index = val;
-	// 		return `Індекс маси тіла: ${this.index}`;
-	// 	} else if (key === "pressure") {
-	// 		this.pressure = val;
-	// 		return `Звичайний тиск: ${this.pressure}`;
-	// 	} else if (key === "diseases") {
-	// 		this.diseases = val;
-	// 		return `Перенесені захворювання CCC: ${this.diseases}`;
-	// 	} else if (key === "lastDate") {
-	// 		this.lastDate = val;
-	// 		return `Дата останнього відвідування: ${this.lastDate}`;
-	// 	}
-	// }
 
 	delete() {
 		Api.deleteCard(this.id).then((res) => {

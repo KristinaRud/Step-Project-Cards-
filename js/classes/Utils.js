@@ -2,21 +2,21 @@ import VisitCardiologist from "./VisitCardiologist.js";
 import VisitDentist from "./VisitDentist.js";
 import VisitTherapist from "./VisitTherapist.js";
 import Api, {token} from "./Api.js";
-import {listContainer} from "../constants.js"
 
 export default class Utils {
     constructor() {
           this.wrapperPlaceholder = document.querySelector(".wrapper-placeholder");
+        this.listContainer = document.querySelector(".visit__list");
     }
 
      showAllCards() {
                 if (token) {
-            if (listContainer.childNodes.length) {
+            if (this.listContainer.childNodes.length) {
                 this.wrapperPlaceholder.remove();
             }
             Api.getAllCards().then((data) => {
                 data.forEach((appointment) => {
-                    this.chooseRenderDoctor(appointment, listContainer)
+                    this.chooseRenderDoctor(appointment)
                 });
             });
         }
@@ -24,16 +24,16 @@ export default class Utils {
 
 
 
-     chooseRenderDoctor(data, container) {
+     chooseRenderDoctor(data) {
         switch (data.doctor) {
             case "Кардіолог":
-                new VisitCardiologist(data).render(container);
+                new VisitCardiologist(data).render(this.listContainer);
                 break;
             case "Стоматолог":
-                new VisitDentist(data).render(container);
+                new VisitDentist(data).render(this.listContainer);
                 break;
             case "Терапевт":
-                new VisitTherapist(data).render(container);
+                new VisitTherapist(data).render(this.listContainer);
                 break;
         }
     }
