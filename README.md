@@ -1,4 +1,5 @@
-# LIGIN: visitDoctor@step.com PASSWORD: 123456
+# LOGIN: visitDoctor@step.com 
+# PASSWORD: 123456
 
 ## Step-Project-Cards-
 Кристина Рудь
