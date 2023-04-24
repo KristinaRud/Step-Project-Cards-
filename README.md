@@ -1,4 +1,6 @@
-# Step-Project-Cards-
+# LIGIN: visitDoctor@step.com PASSWORD: 123456
+
+## Step-Project-Cards-
 Кристина Рудь
 1. Створення та налаштування репозиторію.
 2. Верстка загальної структури проекту (header, основний контейнер).
